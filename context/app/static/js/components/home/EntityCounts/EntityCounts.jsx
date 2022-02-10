@@ -51,7 +51,12 @@ function EntityCounts() {
             href={`/search?entity_type[0]=${entity_type}`}
           />
         ))}
-        <EntityCount icon={CollectionIcon} count={entityCounts?.Collection} label="Collections" href="/collections" />
+        <EntityCount
+          icon={CollectionIcon}
+          count={entityCounts?.Collection}
+          label="Collections"
+          href="/search?entity_type[0]=Collection"
+        />
       </FlexContainer>
     </Background>
   );

@@ -9,7 +9,7 @@ test('Search error if missing entity_type param', () => {
   console.error = jest.fn();
 
   expect(() => render(<Search elasticsearchEndpoint="not-used" title="not-used" />)).toThrow(
-    'Unexpected URL param "entity_type[0]="; Should be one of {donor, sample, dataset}',
+    'Unexpected URL param "entity_type[0]="; Should be one of {donor, sample, dataset, collection}',
   );
 
   console.error = originalConsoleError;

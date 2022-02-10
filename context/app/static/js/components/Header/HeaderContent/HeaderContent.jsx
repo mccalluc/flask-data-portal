@@ -24,15 +24,11 @@ function HeaderContent({ anchorRef }) {
       {!shouldDisplayMenu && (
         <>
           <FlexNoWrap>
-            {['Donor', 'Sample', 'Dataset'].map((type) => (
+            {['Donor', 'Sample', 'Dataset', 'Collection'].map((type) => (
               <HeaderButton key={type} href={`/search?entity_type[0]=${type}`} component={Link}>
                 {`${type}s`}
               </HeaderButton>
             ))}
-            <HeaderButton component={Link} href="/collections">
-              {/* TODO: Move this into the loop above when search works. */}
-              Collections
-            </HeaderButton>
           </FlexNoWrap>
           <Spacer />
 

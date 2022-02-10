@@ -92,10 +92,6 @@ The tables below should populate for each, though the third one is slow.
 
 *   Each preview page should load. The pages ‘Multimodal Molecular Imaging Data’ and ‘Cell Type Annotations’ should have a working Vitessce component.
 
-### Collections Page
-
-*   The collections page should contain a list of panels which contain information about a collection and link to the respective collection.
-
 ### Collection Page
 
 *   The contacts, datasets, creators tables should be populated. The organ column in the datasets table should be empty for now.

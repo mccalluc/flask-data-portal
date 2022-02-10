@@ -7,7 +7,13 @@ import { AppContext } from 'js/components/Providers';
 import LookupEntity from 'js/helpers/LookupEntity';
 import { getAuthHeader, getDefaultQuery } from 'js/helpers/functions';
 import SearchWrapper from 'js/components/searchPage/SearchWrapper';
-import { donorConfig, sampleConfig, datasetConfig, fieldsToHighlight } from 'js/components/searchPage/config';
+import {
+  donorConfig,
+  sampleConfig,
+  datasetConfig,
+  collectionConfig,
+  fieldsToHighlight,
+} from 'js/components/searchPage/config';
 import { listFilter } from 'js/components/searchPage/utils';
 import SearchNote from 'js/components/searchPage/SearchNote';
 import Results from 'js/components/searchPage/Results';
@@ -44,12 +50,14 @@ function Search(props) {
     donor: { ...donorConfig.filters, '': hiddenFilters },
     sample: { ...sampleConfig.filters, '': hiddenFilters },
     dataset: { ...datasetConfig.filters, '': hiddenFilters },
+    collection: { ...collectionConfig.filters, '': hiddenFilters },
   };
 
   const resultFieldsByType = {
     donor: donorConfig.fields,
     sample: sampleConfig.fields,
     dataset: datasetConfig.fields,
+    collection: collectionConfig.fields,
   };
 
   const searchParams = new URLSearchParams(window.location.search);

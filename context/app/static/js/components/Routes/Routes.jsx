@@ -19,7 +19,6 @@ const Preview = lazy(() => import('js/pages/Preview'));
 const Publications = lazy(() => import('js/pages/Publications'));
 const Publication = lazy(() => import('js/pages/Publication'));
 const Services = lazy(() => import('js/pages/Services'));
-const Collections = lazy(() => import('js/pages/Collections'));
 const Cells = lazy(() => import('js/pages/Cells'));
 const Markdown = lazy(() => import('js/components/Markdown'));
 const SavedLists = lazy(() => import('js/pages/SavedLists'));
@@ -178,14 +177,6 @@ function Routes(props) {
     return (
       <Route>
         <Services />
-      </Route>
-    );
-  }
-
-  if (urlPath === '/collections') {
-    return (
-      <Route>
-        <Collections />
       </Route>
     );
   }

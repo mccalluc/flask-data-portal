@@ -99,9 +99,21 @@ const datasetConfig = {
   },
 };
 
+const collectionConfig = {
+  filters: {
+    Contacts: [listFilter('contacts.affiliation', 'Affiliation'), listFilter('contacts.name', 'Name')],
+    Datasets: [listFilter('datasets.data_types', 'Assay')],
+  },
+  fields: {
+    table: [field('hubmap_id', 'HuBMAP ID'), field('title', 'Title')],
+    tile: sharedTileFields,
+    ccf: [],
+  },
+};
+
 const fieldsToHighlight = ['description'];
 const customHighlight = {
   fields: Object.fromEntries(fieldsToHighlight.map((fieldName) => [fieldName, { type: 'plain' }])),
 };
 
-export { donorConfig, sampleConfig, datasetConfig, fieldsToHighlight, customHighlight };
+export { donorConfig, sampleConfig, datasetConfig, collectionConfig, fieldsToHighlight, customHighlight };

@@ -1,0 +1,1 @@
+- Use search for collections.

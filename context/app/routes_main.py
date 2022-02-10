@@ -86,16 +86,6 @@ def vis():
     )
 
 
-@blueprint.route('/collections')
-def collections():
-    flask_data = {**get_default_flask_data()}
-    return render_template(
-        'pages/base_react.html',
-        title='Collections',
-        flask_data=flask_data
-    )
-
-
 @blueprint.route('/my-lists')
 def my_lists():
     flask_data = {**get_default_flask_data()}

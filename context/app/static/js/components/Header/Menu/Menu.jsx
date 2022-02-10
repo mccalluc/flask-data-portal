@@ -41,10 +41,9 @@ function Menu(props) {
       <WidePopper id="main-menu" open={isOpen} anchorEl={anchorRef.current}>
         <WidePaper>
           <MenuList>
-            {['Donor', 'Sample', 'Dataset'].map((type) => (
+            {['Donor', 'Sample', 'Dataset', 'Collection'].map((type) => (
               <DropdownLink key={type} href={`/search?entity_type[0]=${type}`}>{`${type}s`}</DropdownLink>
             ))}
-            <DropdownLink href="/collections">Collections</DropdownLink>
             {[
               ['Resources', ResourceLinks],
               ['Atlas & Tools', AtlasToolsLinks],

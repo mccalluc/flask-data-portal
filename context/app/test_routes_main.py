@@ -155,7 +155,7 @@ def test_robots_txt_allow(client):
     assert 'Disallow: /search' in response.data.decode('utf8')
 
 
-paths = ['/organ', '/publication', '/collections', '/cells']
+paths = ['/organ', '/publication', '/cells']
 
 
 @pytest.mark.parametrize(
