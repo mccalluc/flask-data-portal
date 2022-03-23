@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 
+import { AppContext } from 'js/components/Providers';
 import { LightBlueLink } from 'js/shared-styles/Links';
 import Files from 'js/components/detailPage/files/Files';
 import ProvSection from 'js/components/detailPage/provenance/ProvSection';
@@ -17,6 +18,7 @@ import CollectionsSection from 'js/components/detailPage/CollectionsSection';
 import SupportAlert from 'js/components/detailPage/SupportAlert';
 import { DetailPageAlert } from 'js/components/detailPage/style';
 import { useSearchHits } from 'js/hooks/useSearchData';
+import useVitessceConfig from 'js/hooks/useVitessceConfig';
 import { getAllCollectionsQuery } from 'js/helpers/queries';
 
 // TODO use this context for components other than FileBrowser
@@ -51,7 +53,7 @@ function SummaryDataChildren({ mapped_data_types, origin_sample, doi_url, regist
 const entityStoreSelector = (state) => state.setAssayMetadata;
 
 function DatasetDetail(props) {
-  const { assayMetadata, vitData, hasNotebook, visLiftedUUID } = props;
+  const { assayMetadata, visLiftedUUID } = props;
   const {
     protocol_url,
     metadata,
@@ -88,6 +90,9 @@ function DatasetDetail(props) {
 
   const { searchHits: allCollections } = useSearchHits(getAllCollectionsQuery);
   const collectionsData = getCollectionsWhichContainDataset(uuid, allCollections);
+
+  const { groupsToken } = useContext(AppContext);
+  const vitData = useVitessceConfig(uuid, groupsToken);
 
   const shouldDisplaySection = {
     provenance: entity_type !== 'Support',
@@ -160,9 +165,7 @@ function DatasetDetail(props) {
             doi_url={doi_url}
           />
         </Summary>
-        {shouldDisplaySection.visualization && (
-          <VisualizationWrapper vitData={vitData} uuid={uuid} hasNotebook={hasNotebook} />
-        )}
+        {shouldDisplaySection.visualization && <VisualizationWrapper vitData={vitData} uuid={uuid} />}
         {shouldDisplaySection.provenance && <ProvSection uuid={uuid} assayMetadata={assayMetadata} />}
         {shouldDisplaySection.protocols && <Protocol protocol_url={protocol_url} />}
         {shouldDisplaySection.metadata && <MetadataTable metadata={combinedMetadata} hubmap_id={hubmap_id} />}

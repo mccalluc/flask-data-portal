@@ -1,0 +1,1 @@
+- Request vitessce conf from client-side, rather than blocking page load.
