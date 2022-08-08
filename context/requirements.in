@@ -10,7 +10,7 @@ hubmap-api-py-client>=0.0.9
 hubmap-commons>=2.0.12
 
 # Plain "git+https://github.com/..." references can't be hashed, so we point to a release zip instead.
-https://github.com/hubmapconsortium/portal-visualization/archive/refs/tags/0.0.5.zip
+https://github.com/hubmapconsortium/portal-visualization/archive/refs/tags/0.0.6.zip
 
 # Security warning for older versions;
 # Can be removed when commons drops prov dependency.
