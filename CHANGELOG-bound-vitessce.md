@@ -1,0 +1,1 @@
+- Use new Vitessce functionality so components can't be dragged off the bottom.

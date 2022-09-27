@@ -184,6 +184,7 @@ function Visualization({ vitData, uuid, hasNotebook, shouldDisplayHeader }) {
               onConfigChange={handleVitessceConfigDebounced}
               height={vizIsFullscreen ? null : vitessceFixedHeight}
               onWarn={addError}
+              isBounded
             />
           </ExpandableDiv>
         </Paper>
