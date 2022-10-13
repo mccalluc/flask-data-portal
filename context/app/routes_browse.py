@@ -57,11 +57,13 @@ def details(type, uuid):
     marker = request.args.get('marker')
 
     if type == 'dataset':
-        conf_cells_uuid = client.get_vitessce_conf_cells_and_lifted_uuid(entity, marker=marker)
+        configs_cells_uuid = client.get_configs_cells_and_lifted_uuid(entity, marker=marker)
         flask_data.update({
-            'vitessce_conf': conf_cells_uuid.vitessce_conf.conf,
-            'has_notebook': conf_cells_uuid.vitessce_conf.cells is not None,
-            'vis_lifted_uuid': conf_cells_uuid.vis_lifted_uuid
+            'vitessce_conf_list': [
+                config.to_dict() for config in
+                configs_cells_uuid.configs_cells.configs],
+            'has_notebook': len(configs_cells_uuid.configs_cells.cells) > 0,
+            'vis_lifted_uuid': configs_cells_uuid.vis_lifted_uuid
         })
 
     template = 'base-pages/react-content.html'
@@ -89,9 +91,9 @@ def details_vitessce(type, uuid):
         abort(404)
     client = get_client()
     entity = client.get_entity(uuid)
-    vitessce_conf = client.get_vitessce_conf_cells_and_lifted_uuid(entity).vitessce_conf
+    configs_cells = client.get_configs_cells_and_lifted_uuid(entity).configs_cells
     # Returns a JSON null if there is no visualization.
-    response = jsonify(vitessce_conf.conf)
+    response = jsonify([config.to_dict() for config in configs_cells.configs])
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 

@@ -7,7 +7,7 @@ export function useVitessceConfig({ vitData, setVitessceState, setVitessceErrors
 
   useEffect(() => {
     function setVitessceDefaults(vData) {
-      setVitessceState(Array.isArray(vData) ? vData[0] : vData);
+      setVitessceState(vData.length === 1 ? vData[0] : vData);
       setVitessceSelection(0);
       setVitessceConfig(vData);
     }
@@ -31,11 +31,11 @@ export function useVitessceConfig({ vitData, setVitessceState, setVitessceErrors
       let initializedVitDataFromUrl = vitData;
       let initialSelectionFromUrl;
       // If these is a url conf and the we have a multidataset, use the url conf to find the initial selection of the multi-dataset.
-      if (Array.isArray(vitData)) {
+      if (vitData.length > 1) {
         initialSelectionFromUrl = Math.max(0, vitData.map(({ name }) => name).indexOf(vitessceURLConf?.name));
         initializedVitDataFromUrl[initialSelectionFromUrl] = vitessceURLConf || vitData[initialSelectionFromUrl];
       } else {
-        initializedVitDataFromUrl = vitessceURLConf || vitData;
+        initializedVitDataFromUrl = vitessceURLConf || vitData[0];
       }
       setVitessceState(initializedVitDataFromUrl[initialSelectionFromUrl]);
       setVitessceSelection(initialSelectionFromUrl);

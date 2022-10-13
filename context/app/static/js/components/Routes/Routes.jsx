@@ -37,7 +37,7 @@ const WorkspacePleaseWait = lazy(() => import('js/pages/WorkspacePleaseWait'));
 function Routes({ flaskData }) {
   const {
     entity,
-    vitessce_conf,
+    vitessce_conf_list,
     title,
     publications,
     markdown,
@@ -66,14 +66,14 @@ function Routes({ flaskData }) {
   if (urlPath.startsWith('/browse/donor/')) {
     return (
       <Route>
-        <Donor assayMetadata={entity} vitData={vitessce_conf} />
+        <Donor assayMetadata={entity} vitData={vitessce_conf_list} />
       </Route>
     );
   }
   if (urlPath.startsWith('/browse/sample/')) {
     return (
       <Route>
-        <Sample assayMetadata={entity} vitData={vitessce_conf} />
+        <Sample assayMetadata={entity} vitData={vitessce_conf_list} />
       </Route>
     );
   }
@@ -83,7 +83,7 @@ function Routes({ flaskData }) {
       <Route>
         <Dataset
           assayMetadata={entity}
-          vitData={vitessce_conf}
+          vitData={vitessce_conf_list}
           hasNotebook={has_notebook}
           visLiftedUUID={vis_lifted_uuid}
         />
@@ -166,7 +166,7 @@ function Routes({ flaskData }) {
   if (urlPath.startsWith('/preview')) {
     return (
       <Route>
-        <Preview title={title} vitData={vitessce_conf} assayMetadata={entity} markdown={markdown} />
+        <Preview title={title} vitData={vitessce_conf_list} assayMetadata={entity} markdown={markdown} />
       </Route>
     );
   }
@@ -287,7 +287,7 @@ Routes.propTypes = {
     publications: PropTypes.object,
     entity: PropTypes.object,
     entities: PropTypes.array,
-    vitessce_conf: PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.object)]),
+    vitessce_conf_list: PropTypes.arrayOf(PropTypes.object),
     markdown: PropTypes.string,
     collection: PropTypes.object,
     errorCode: PropTypes.number,

@@ -7,17 +7,18 @@ from flask import abort, current_app
 import requests
 
 from hubmap_commons.type_client import TypeClient
+from vitessce import VitessceConfig
 
 from .client_utils import files_from_response
 from portal_visualization.builder_factory import get_view_config_builder
-from portal_visualization.builders.base_builders import ConfCells
+from portal_visualization.builders.base_builders import ConfigsCells
 
 Entity = namedtuple('Entity', ['uuid', 'type', 'name'], defaults=['TODO: name'])
 
 
 @dataclass
 class VitessceConfLiftedUUID:
-    vitessce_conf: dict
+    configs_cells: tuple
     vis_lifted_uuid: str
 
 
@@ -151,9 +152,9 @@ class ApiClient():
             body_json=query)
         return files_from_response(response_json)
 
-    def get_vitessce_conf_cells_and_lifted_uuid(self, entity, marker=None, wrap_error=True):
+    def get_configs_cells_and_lifted_uuid(self, entity, marker=None, wrap_error=True):
         '''
-        Returns a dataclass with vitessce_conf and is_lifted.
+        Returns a dataclass with configs_cells and vis_lifted_uuid.
         '''
         vis_lifted_uuid = None  # default
         image_pyramid_descendants = _get_image_pyramid_descendants(entity)
@@ -167,13 +168,13 @@ class ApiClient():
             # about "files". Bill confirms that when the new structure comes in
             # there will be a period of backward compatibility to allow us to migrate.
             derived_entity['files'] = derived_entity['metadata'].get('files', [])
-            vitessce_conf = self.get_vitessce_conf_cells_and_lifted_uuid(
+            configs_cells = self.get_configs_cells_and_lifted_uuid(
                 derived_entity, marker=marker, wrap_error=wrap_error
-            ).vitessce_conf
+            ).configs_cells
             vis_lifted_uuid = derived_entity['uuid']
 
         elif not entity.get('files') or not entity.get('data_types'):
-            vitessce_conf = ConfCells(None, None)
+            configs_cells = ConfigsCells([], [])
 
         # Otherwise, just try to visualize the data for the entity itself:
         else:
@@ -185,13 +186,13 @@ class ApiClient():
                     return type_client.getAssayType(name)
                 Builder = get_view_config_builder(entity=entity, get_assay=get_assay)
                 builder = Builder(entity, self.groups_token, current_app.config["ASSETS_ENDPOINT"])
-                vitessce_conf = builder.get_conf_cells(marker=marker)
+                configs_cells = builder.get_configs_cells(marker=marker)
             except Exception as e:
                 if not wrap_error:
                     raise e
                 current_app.logger.error(
                     f'Building vitessce conf threw error: {traceback.format_exc()}')
-                vitessce_conf = ConfCells({
+                configs_cells = ConfigsCells([VitessceConfig.from_dict({
                     'name': 'Error',
                     'version': '1.0.4',
                     'datasets': [],
@@ -203,10 +204,10 @@ class ApiClient():
                         },
                         'x': 0, 'y': 0, 'w': 12, 'h': 1
                     }],
-                }, None)
+                })], [])
 
         return VitessceConfLiftedUUID(
-            vitessce_conf=vitessce_conf,
+            configs_cells=configs_cells,
             vis_lifted_uuid=vis_lifted_uuid)
 
 

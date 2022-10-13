@@ -96,10 +96,8 @@ def details_notebook(type, uuid, create_workspace):
     client = get_client()
     entity = client.get_entity(uuid)
     workspace_name = f"{entity['hubmap_id']} Workspace" if create_workspace else None
-    vitessce_conf = client.get_vitessce_conf_cells_and_lifted_uuid(entity).vitessce_conf
-    if (vitessce_conf is None
-            or vitessce_conf.conf is None
-            or vitessce_conf.cells is None):
+    configs_cells = client.get_configs_cells_and_lifted_uuid(entity).configs_cells
+    if (len(configs_cells.configs) == 0 or len(configs_cells.cells) == 0):
         abort(404)
 
     hubmap_id = entity['hubmap_id']
@@ -114,7 +112,7 @@ def details_notebook(type, uuid, create_workspace):
             '!pip uninstall community flask albumentations -y '
             '# Preinstalled on Colab; Causes version conflicts.\n'
             f'!pip install vitessce[all]=={vitessce.__version__}'),
-        *vitessce_conf.cells
+        *configs_cells.cells
     ]
 
     return _nb_response_from_objs(hubmap_id, cells, workspace_name=workspace_name, uuids=[uuid])

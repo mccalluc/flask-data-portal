@@ -2,7 +2,7 @@ import json
 
 from datauri import DataURI
 
-from portal_visualization.builders.base_builders import ConfCells
+from portal_visualization.builders.base_builders import ConfigsCells
 from .client import ApiClient
 
 
@@ -19,7 +19,7 @@ class MockApiClient(ApiClient):
         }
 
     def get_vitessce_conf_cells(self, entity):
-        return ConfCells(_get_mock_vitessce_conf(), None)
+        return ConfigsCells(_get_mock_vitessce_conf(), None)
 
 
 def _get_mock_vitessce_conf():

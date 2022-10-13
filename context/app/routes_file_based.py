@@ -28,7 +28,7 @@ def preview_details_view(name):
             'created_by_user_displayname': preview_metadata['created_by_user_displayname'],
             'created_by_user_email': preview_metadata['created_by_user_email'],
         },
-        'vitessce_conf': preview_metadata.get('vitessce_conf')
+        'vitessce_conf_list': [preview_metadata.get('vitessce_conf')]
     }
     return render_template(
         'base-pages/react-content.html',

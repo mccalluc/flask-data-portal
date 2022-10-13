@@ -73,10 +73,10 @@ def get_errors(override_uuids):
         warn(f'{i}/{len(uuids)} ({len(errors)} errors): Checking {uuid} ...')
         try:
             before_conf = perf_counter()
-            conf_uuid = client.get_vitessce_conf_cells_and_lifted_uuid(dataset, wrap_error=False)
+            configs_cells_uuid = client.get_configs_cells_and_lifted_uuid(dataset, wrap_error=False)
             warn(
-                f'\tVis: {conf_uuid.vitessce_conf.conf is not None}; '
-                f'Lifted: {conf_uuid.vis_lifted_uuid} ')
+                f'\tVis: {len(configs_cells_uuid.configs_cells.configs) > 0}; '
+                f'Lifted: {configs_cells_uuid.vis_lifted_uuid} ')
             waiting_for_conf += perf_counter() - before_conf
         except Exception as e:
             warn(f'\tERROR: {e}')

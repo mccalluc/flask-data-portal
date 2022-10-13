@@ -1,0 +1,1 @@
+- Update to handle new response structure from portal-vis
