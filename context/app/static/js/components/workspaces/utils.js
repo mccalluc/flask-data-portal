@@ -1,6 +1,9 @@
 import { jobStatuses, validateJobStatus, workspaceStatuses, validateWorkspaceStatus } from './statusCodes';
 
 function getWorkspacesApiHeaders(workspacesToken) {
+  if (!workspacesToken) {
+    throw Error('token missing; login again');
+  }
   return {
     'Content-Type': 'application/json',
     'UWS-Authorization': `Token ${workspacesToken}`,
@@ -129,7 +132,17 @@ function condenseJobs(jobs) {
     const details = job.job_details.current_job_details;
     if (details.connection_details) {
       const { url_domain, url_path } = details.connection_details;
-      return `${url_domain}${url_path}`;
+      /*
+      API is returning URLs that end with "/lab", but these redirect to "/lab/tree"
+      and then produce an error message:
+      
+      The path:
+        /passthrough/l002.hive.psc.edu/421/lab/tree
+      was not found. JupyterLab redirected to:
+        /passthrough/l002.hive.psc.edu/421/
+      */
+      const clean_url_path = url_path.replace(/\/lab\?/, '?');
+      return `${url_domain}${clean_url_path}`;
     }
     return null;
   }
@@ -188,4 +201,12 @@ async function locationIfJobRunning({ workspaceId, setMessage, setDead, workspac
   return null;
 }
 
-export { createEmptyWorkspace, deleteWorkspace, stopJobs, mergeJobsIntoWorkspaces, condenseJobs, locationIfJobRunning };
+export {
+  getWorkspacesApiHeaders,
+  createEmptyWorkspace,
+  deleteWorkspace,
+  stopJobs,
+  mergeJobsIntoWorkspaces,
+  condenseJobs,
+  locationIfJobRunning,
+};

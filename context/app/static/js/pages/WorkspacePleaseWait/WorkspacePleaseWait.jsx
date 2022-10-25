@@ -22,7 +22,8 @@ function WorkspacePleaseWait({ workspaceId }) {
     if (jobLocation) {
       const [urlBase, urlQuery] = jobLocation.split('?');
       const workspacePath = document.location.hash.slice(1);
-      const jupyterUrl = `${urlBase}/tree/${workspacePath}?${urlQuery}`;
+      const path = workspacePath ? `/tree/${workspacePath}` : '';
+      const jupyterUrl = `${urlBase}${path}?${urlQuery}`;
       document.location = jupyterUrl;
     } else {
       setTimeout(setLocationOrRetry, 5000);

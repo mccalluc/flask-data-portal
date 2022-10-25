@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 
 import { AppContext } from 'js/components/Providers';
 
-import { mergeJobsIntoWorkspaces } from './utils';
+import { mergeJobsIntoWorkspaces, getWorkspacesApiHeaders } from './utils';
 
 function useWorkspacesList() {
   const [workspacesList, setWorkspacesList] = useState([]);
@@ -15,10 +15,7 @@ function useWorkspacesList() {
     async function getAndSetWorkspacesList() {
       const fetchOpts = {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'UWS-Authorization': `Token ${workspacesToken}`,
-        },
+        headers: getWorkspacesApiHeaders(workspacesToken),
       };
       const [workspacesResponse, jobsResponse] = await Promise.all([
         fetch(`${workspacesEndpoint}/workspaces`, fetchOpts),
