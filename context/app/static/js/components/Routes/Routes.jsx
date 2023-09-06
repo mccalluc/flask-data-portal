@@ -33,6 +33,7 @@ const DatasetSearch = lazy(() => import('js/pages/entity-search/DatasetSearch'))
 const Workspaces = lazy(() => import('js/pages/Workspaces'));
 const WorkspacePleaseWait = lazy(() => import('js/pages/WorkspacePleaseWait'));
 const Genes = lazy(() => import('js/pages/Genes'));
+const CellTypes = lazy(() => import('js/pages/CellTypes'));
 
 function Routes({ flaskData }) {
   const {
@@ -276,6 +277,14 @@ function Routes({ flaskData }) {
     return (
       <Route>
         <Genes geneSymbol={geneSymbol} />
+      </Route>
+    );
+  }
+
+  if (urlPath.startsWith('/cell-types')) {
+    return (
+      <Route>
+        <CellTypes />
       </Route>
     );
   }
