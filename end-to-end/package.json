@@ -10,7 +10,8 @@
   },
   "scripts": {
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "preinstall": "npx only-allow pnpm"
   },
   "repository": {
     "type": "git",

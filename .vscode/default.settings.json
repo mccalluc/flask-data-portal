@@ -11,6 +11,7 @@
     "editor.defaultFormatter": "ms-python.autopep8"
   },
   "python.formatting.provider": "autopep8",
+  "npm.packageManager": "pnpm",
   "optional": {
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {

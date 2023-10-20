@@ -115,9 +115,10 @@ All designs are in [Figma](https://www.figma.com/files/team/834568130405102661/H
     - `` pyenv install `cat .python-version`  ``
     - `` pyenv virtualenv `cat .python-version` portal ``
     - `pyenv activate portal`
-- `nodejs/npm`: Suggest [installing nvm](https://github.com/nvm-sh/nvm#installing-and-updating) and then using it to install the appropriate node version: `nvm install`.
+- `nodejs`: Suggest [installing nvm](https://github.com/nvm-sh/nvm#installing-and-updating) and then using it to install the appropriate node version: `nvm install`.
   - `` nvm install `cat .nvmrc`  ``
   - `` nvm use `cat .nvmrc`  ``
+- `pnpm`: Suggest [install pnpm via npm](https://pnpm.io/installation#using-npm) after installing the proper `nodejs` version.
 
 Optional:
 
@@ -200,8 +201,8 @@ Load tests [are available](end-to-end/artillery/), but they are not run as part 
 
 ### Running tests locally without docker
 
-- **Jest**: `cd context; npm run test`
-- **Cypress**: With the application running, `cd end-to-end; npm run cypress:open`
+- **Jest**: `cd context; pnpm run test`
+- **Cypress**: With the application running, `cd end-to-end; pnpm run cypress:open`
   - If using WSL2, see the WSL2-specific steps in the [end to end readme](./end-to-end/README.md).
   - Note that the cypress tests (particularly for the publication page) are expected to be run with the `test` environment enabled in app.conf
 - **Pytest**: `cd context; pytest app --ignore app/api/vitessce_conf_builder`
@@ -215,15 +216,15 @@ You can also lint and auto-correct from the command-line:
 
 ```
 cd context
-npm run lint
-npm run lint:fix
+pnpm run lint
+pnpm run lint:fix
 EXCLUDE=node_modules,ingest-validation-tools,etc/dev/organ-utils
 autopep8 --in-place --aggressive -r . --exclude $EXCLUDE
 ```
 
 ### Storybook
 
-To start storybook locally you can either run `etc/dev/dev-start.sh`, or just `npm run storybook`,
+To start storybook locally you can either run `etc/dev/dev-start.sh`, or just `pnpm run storybook`,
 and after it has started, visit [localhost:6006](http://localhost:6006).
 
 ## Build, tag, and deploy
@@ -234,7 +235,7 @@ The build, tag, deploy, and QA procedures are [detailed here](https://hms-dbmi.a
 
 <details><summary>Webpack</summary>
 
-To view visualizations of the production webpack bundle run `npm run build:analyze`.
+To view visualizations of the production webpack bundle run `pnpm run build:analyze`.
 The script will generate two files, report.html and stats.html, inside the public directory each showing a different visual representation of the bundle.
 
 </details>

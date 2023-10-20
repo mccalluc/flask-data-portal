@@ -6,10 +6,10 @@ set -o errexit
 cd context
 
 start lint
-npm run lint
+pnpm run lint
 end lint
 
 start npm-test
-npm run test
+pnpm run test
 end npm-test
 

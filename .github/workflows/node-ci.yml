@@ -12,21 +12,22 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
-
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.8.0
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
           node-version-file: ".nvmrc"
-          cache: "npm"
-          cache-dependency-path: context/package-lock.json
-
-      - run: npm --version
+          cache: "pnpm"
+          cache-dependency-path: context/pnpm-lock.yaml
+      - run: pnpm --version
 
       - name: Install node dependencies
-        run: npm ci --prefix context
+        run: pnpm i --frozen-lockfile --dir context
 
       - name: Run test script
         run: etc/test/test-node.sh

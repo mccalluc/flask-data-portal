@@ -3,15 +3,18 @@ ARG PYTHON_MINOR_V
 
 FROM node:${NODE_V}-alpine as builder
 
+# Run corepack to get `pnpm`
+RUN corepack enable
+
 WORKDIR /work
 RUN apk add --no-cache git
 
 # COPY only what is needed so layers can be cached.
 COPY package.json .
-COPY package-lock.json .
+COPY pnpm-lock.yaml . 
 COPY .npmrc .
 
-RUN npm ci
+RUN pnpm ci
 
 COPY tsconfig.json tsconfig.json
 COPY .swcrc .swcrc
@@ -21,7 +24,7 @@ COPY ingest-validation-tools ingest-validation-tools
 # portal-visualization is python-only, and not needed for the npm build.
 
 ENV NODE_OPTIONS="--max-old-space-size=4096"
-RUN npm run build
+RUN pnpm run build
 
 FROM tiangolo/uwsgi-nginx-flask:python${PYTHON_MINOR_V}
 
