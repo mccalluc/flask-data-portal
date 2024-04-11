@@ -89,7 +89,7 @@
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
-    "chromatic": "^5.9.2",
+    "chromatic": "^5.10.2",
     "compression-webpack-plugin": "^10.0.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.49.0",
