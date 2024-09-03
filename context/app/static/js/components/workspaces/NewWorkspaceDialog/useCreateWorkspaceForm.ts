@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
+// import { useLaunchWorkspaceStore } from 'js/stores/useWorkspaceModalStore';
 import { CreateTemplateNotebooksTypes, WorkspaceResourceOptions } from '../types';
 import { useTemplateNotebooks } from './hooks';
 import {
@@ -62,6 +63,7 @@ function useCreateWorkspaceForm({
 }: UseCreateWorkspaceTypes) {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
   const createTemplateNotebooks = useTemplateNotebooks();
+  // const { setDialogType } = useLaunchWorkspaceStore();
 
   const checkedWorkspaceName = defaultName ?? '';
   const checkedProtectedDatasets = initialProtectedDatasets ?? '';

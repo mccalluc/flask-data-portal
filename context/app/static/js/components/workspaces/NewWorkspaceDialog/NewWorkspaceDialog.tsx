@@ -128,6 +128,7 @@ function NewWorkspaceDialog({
       datasets,
       workspaceResourceOptions,
     }: CreateWorkspaceFormTypes) => {
+      // setDialogType('LAUNCH_NEW_WORKSPACE');
       onSubmit({
         workspaceName,
         templateKeys,

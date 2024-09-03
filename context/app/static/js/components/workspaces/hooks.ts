@@ -263,6 +263,7 @@ function useLaunchWorkspace() {
         setWorkspace(workspace);
       } else {
         await startAndOpenWorkspace({ workspace, jobTypeId, templatePath, resourceOptions });
+        // setDialogType(null);
       }
     },
     [open, runningWorkspace, setWorkspace, startAndOpenWorkspace],
