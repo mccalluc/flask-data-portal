@@ -22,7 +22,7 @@ asciitree==0.3.3
     # via zarr
 asgiref==3.7.2
     # via flask
-async-timeout==4.0.2 ; python_full_version < '3.11'
+async-timeout==4.0.2
     # via aiohttp
 attrs==21.4.0
     # via
@@ -34,7 +34,7 @@ blinker==1.9.0
     # via flask
 boto3==1.28.17
     # via
-    #   -r context/requirements.in
+    #   -r requirements.in
     #   hubmap-commons
 botocore==1.31.17
     # via
@@ -43,7 +43,7 @@ botocore==1.31.17
     #   s3transfer
 certifi==2023.7.22
     # via requests
-cffi==1.15.0 ; platform_python_implementation != 'PyPy'
+cffi==1.15.0
     # via cryptography
 charset-normalizer==2.0.12
     # via requests
@@ -57,10 +57,6 @@ cloudpickle==2.2.1
     # via
     #   dask
     #   distributed
-colorama==0.4.6 ; platform_system == 'Windows'
-    # via
-    #   click
-    #   tqdm
 contourpy==1.1.0
     # via matplotlib
 cryptography==43.0.1
@@ -75,11 +71,11 @@ dask==2024.2.1
     #   ome-zarr
 distributed==2024.2.1
     # via ome-zarr
-fasteners==0.17.3 ; sys_platform != 'emscripten'
+fasteners==0.17.3
     # via zarr
-flask==3.1.0
+flask[async]==3.1.0
     # via
-    #   -r context/requirements.in
+    #   -r requirements.in
     #   hubmap-commons
 fonttools==4.43.0
     # via matplotlib
@@ -87,7 +83,7 @@ frozenlist==1.3.0
     # via
     #   aiohttp
     #   aiosignal
-fsspec==2023.6.0
+fsspec[s3]==2023.6.0
     # via
     #   dask
     #   ome-zarr
@@ -95,17 +91,17 @@ fsspec==2023.6.0
     #   s3fs
 globus-sdk==3.9.0
     # via
-    #   -r context/requirements.in
+    #   -r requirements.in
     #   hubmap-commons
 h5py==3.9.0
     # via
     #   anndata
     #   scanpy
 hubmap-api-py-client==0.0.11
-    # via -r context/requirements.in
+    # via -r requirements.in
 hubmap-commons==2.1.18
     # via
-    #   -r context/requirements.in
+    #   -r requirements.in
     #   portal-visualization
 idna==3.7
     # via
@@ -157,7 +153,7 @@ locket==1.0.0
     #   partd
 lxml==4.9.1
     # via
-    #   -r context/requirements.in
+    #   -r requirements.in
     #   prov
 markupsafe==2.1.1
     # via
@@ -257,7 +253,7 @@ pillow==11.0.0
 platformdirs==2.5.1
     # via black
 portal-visualization @ https://github.com/hubmapconsortium/portal-visualization/archive/refs/tags/0.3.6.zip
-    # via -r context/requirements.in
+    # via -r requirements.in
 propcache==0.2.0
     # via yarl
 property==2.2
@@ -266,9 +262,9 @@ prov==2.0.0
     # via hubmap-commons
 psutil==5.9.8
     # via distributed
-pycparser==2.21 ; platform_python_implementation != 'PyPy'
+pycparser==2.21
     # via cffi
-pyjwt==2.4.0
+pyjwt[crypto]==2.4.0
     # via globus-sdk
 pynndescent==0.5.10
     # via umap-learn
@@ -280,7 +276,7 @@ pyrsistent==0.18.1
     # via jsonschema
 python-datauri==2.2.0
     # via
-    #   -r context/requirements.in
+    #   -r requirements.in
     #   portal-visualization
 python-dateutil==2.8.2
     # via
@@ -289,7 +285,7 @@ python-dateutil==2.8.2
     #   pandas
     #   prov
 python-frontmatter==1.1.0
-    # via -r context/requirements.in
+    # via -r requirements.in
 pytz==2022.1
     # via
     #   hubmap-commons
@@ -297,11 +293,9 @@ pytz==2022.1
     #   pandas
 pywavelets==1.4.1
     # via scikit-image
-pywin32==308 ; platform_python_implementation != 'PyPy' and sys_platform == 'win32'
-    # via jupyter-core
 pyyaml==6.0.1
     # via
-    #   -r context/requirements.in
+    #   -r requirements.in
     #   dask
     #   distributed
     #   hubmap-commons
@@ -310,7 +304,7 @@ rdflib==6.1.1
     # via prov
 requests==2.32.3
     # via
-    #   -r context/requirements.in
+    #   -r requirements.in
     #   globus-sdk
     #   hubmap-api-py-client
     #   hubmap-commons
@@ -343,8 +337,6 @@ seaborn==0.12.2
     # via scanpy
 session-info==1.0.0
     # via scanpy
-setuptools==75.6.0
-    # via rdflib
 six==1.16.0
     # via
     #   isodate
@@ -364,7 +356,7 @@ tifffile==2023.8.12
     # via
     #   scikit-image
     #   vitessce
-tomli==2.0.1 ; python_full_version < '3.11'
+tomli==2.0.1
     # via black
 toolz==0.12.0
     # via
@@ -374,7 +366,7 @@ toolz==0.12.0
     #   partd
 tornado==6.4.2
     # via distributed
-tqdm==4.66.1
+tqdm==4.66.3
     # via
     #   scanpy
     #   umap-learn
