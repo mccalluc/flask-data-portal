@@ -5,7 +5,7 @@
   "main": "index.js",
   "devDependencies": {
     "@testing-library/cypress": "^10.0.2",
-    "artillery": "^1.6.1",
+    "artillery": "^2.0.21",
     "cypress": "^13.11.0"
   },
   "scripts": {
