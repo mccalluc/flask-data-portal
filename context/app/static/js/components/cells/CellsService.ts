@@ -3,7 +3,7 @@
 // it might cache results, or the API calls might be made from the JS instead of Python,
 // and then the instance would be initialized with the Cells API URL.
 
-import { AutocompleteQueryResponse } from './AutocompleteEntity/types';
+import { AutocompleteQueryResponse } from './MolecularDataQueryForm/AutocompleteEntity/types';
 import { QueryType } from './queryTypes';
 import { ResultCounts } from './store';
 

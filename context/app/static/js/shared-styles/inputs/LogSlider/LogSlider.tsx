@@ -1,4 +1,4 @@
-import React, { ComponentProps, useMemo } from 'react';
+import React, { ComponentProps, ForwardedRef, forwardRef, useMemo } from 'react';
 
 import MarkedSlider from 'js/shared-styles/inputs/Slider';
 
@@ -15,7 +15,7 @@ interface LogSliderProps extends Omit<ComponentProps<typeof MarkedSlider>, 'min'
   maxLog: number;
 }
 
-function LogSlider({ minLog, maxLog, ...rest }: LogSliderProps) {
+function LogSlider({ minLog, maxLog, ...rest }: LogSliderProps, ref: ForwardedRef<HTMLInputElement>) {
   const marks = useMemo(() => {
     return [...Array(1 + maxLog - minLog).keys()].map((k) => k + minLog);
   }, [minLog, maxLog]);
@@ -29,8 +29,9 @@ function LogSlider({ minLog, maxLog, ...rest }: LogSliderProps) {
         label: powerOf10(m),
       }))}
       {...rest}
+      ref={ref}
     />
   );
 }
 
-export default LogSlider;
+export default forwardRef(LogSlider);

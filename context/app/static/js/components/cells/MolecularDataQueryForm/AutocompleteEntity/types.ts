@@ -1,4 +1,4 @@
-import { QueryType } from '../queryTypes';
+import { QueryType } from '../../queryTypes';
 
 export interface AutocompleteQueryKey {
   targetEntity: QueryType;

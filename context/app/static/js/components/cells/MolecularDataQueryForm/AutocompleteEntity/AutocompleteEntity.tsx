@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField, { TextFieldProps } from '@mui/material/TextField';
 import Chip from '@mui/material/Chip';
+import { useController } from 'react-hook-form';
 import { useAutocompleteQuery } from './hooks';
-import { AutocompleteQueryResponse } from './types';
+import { AutocompleteResult } from './types';
 import { createInitialValue } from './utils';
-import { QueryType, queryTypes } from '../queryTypes';
+import { QueryType, queryTypes } from '../../queryTypes';
 import { PreserveWhiteSpaceListItem } from './styles';
+import { useQueryType, useMolecularDataQueryFormState } from '../hooks';
 
 function buildHelperText(entity: string): string {
   return `Multiple ${entity} are allowed and only 'OR' queries are supported.`;
@@ -20,29 +22,22 @@ const labelAndHelperTextProps: Record<QueryType, Pick<TextFieldProps, 'label' | 
 };
 interface AutocompleteEntityProps<T extends QueryType> {
   targetEntity: T;
-  setter: (value: string[]) => void;
   defaultValue?: string;
 }
 
-function AutocompleteEntity<T extends QueryType>({ targetEntity, setter, defaultValue }: AutocompleteEntityProps<T>) {
+function AutocompleteEntity<T extends QueryType>({ targetEntity, defaultValue }: AutocompleteEntityProps<T>) {
   const [substring, setSubstring] = useState('');
-  const [selectedOptions, setSelectedOptions] = useState<AutocompleteQueryResponse>(createInitialValue(defaultValue));
 
-  useEffect(() => {
-    // Unwrap selected options and pass to setter to keep values in sync
-    setter(selectedOptions.map((match) => match.full));
-  }, [selectedOptions, setter]);
+  const { entityFieldName: fieldName } = useQueryType();
 
-  // If default value or target entity changes, reset selected options and substring to default value
-  useEffect(() => {
-    setSubstring('');
-    setSelectedOptions(createInitialValue(defaultValue));
-  }, [defaultValue, targetEntity]);
+  const { control } = useMolecularDataQueryFormState();
+  const { field } = useController({
+    name: fieldName,
+    control,
+    defaultValue: createInitialValue(defaultValue),
+  });
 
-  const { data, isLoading } = useAutocompleteQuery({ targetEntity, substring });
-
-  // Include currently selected options to avoid invalid value errors in console
-  const options = selectedOptions.concat(data ?? []);
+  const { data: options = [], isLoading } = useAutocompleteQuery({ targetEntity, substring });
 
   function handleChange({ target: { value } }: React.ChangeEvent<HTMLInputElement>) {
     setSubstring(value);
@@ -50,7 +45,6 @@ function AutocompleteEntity<T extends QueryType>({ targetEntity, setter, default
 
   return (
     <Autocomplete
-      value={selectedOptions}
       options={options}
       multiple
       filterSelectedOptions
@@ -79,14 +73,6 @@ function AutocompleteEntity<T extends QueryType>({ targetEntity, setter, default
           );
         })
       }
-      onChange={(_, value) => {
-        if (defaultValue && !value.map((match) => match.full).includes(defaultValue)) {
-          // If default value is set and not included in selected options, add it
-          setSelectedOptions([...createInitialValue(defaultValue), ...value]);
-          return;
-        }
-        setSelectedOptions(value);
-      }}
       renderInput={({ InputLabelProps, ...params }) => (
         <TextField
           {...labelAndHelperTextProps[targetEntity]}
@@ -101,6 +87,10 @@ function AutocompleteEntity<T extends QueryType>({ targetEntity, setter, default
           }}
         />
       )}
+      {...field}
+      onChange={(_, value: AutocompleteResult[]) => {
+        field.onChange(value);
+      }}
     />
   );
 }

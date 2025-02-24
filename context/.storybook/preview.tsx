@@ -9,7 +9,6 @@ import '@fontsource-variable/inter/files/inter-latin-standard-normal.woff2';
 
 enableMapSet();
 
-const allowConditions = [(url) => String(url).endsWith('thumbnail.jpg')];
 initialize({
   serviceWorker: {
     options: {

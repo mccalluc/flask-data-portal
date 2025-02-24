@@ -9,7 +9,6 @@ import { animated } from '@react-spring/web';
 import DatasetTableRow from 'js/components/cells/DatasetTableRow';
 import { initialHeight } from 'js/components/cells/CellsResults/style';
 import { useExpandSpring } from 'js/hooks/useExpand';
-import { useAccordionStep } from 'js/shared-styles/accordions/StepAccordion';
 import { WrappedCellsResultsDataset } from '../types';
 import CellsCharts from '../CellsCharts';
 import { DatasetCellsChartsProps } from '../CellsCharts/types';
@@ -29,18 +28,9 @@ const columns = [
 interface DatasetsTableProps {
   datasets: WrappedCellsResultsDataset[];
   expandedContent?: React.ComponentType<DatasetCellsChartsProps>;
-  stepText?: string;
 }
 
-function DatasetsTable({
-  datasets,
-  expandedContent = CellsCharts,
-  stepText = `${datasets.length} Datasets Matching Query Parameters`,
-}: DatasetsTableProps) {
-  const { completeStep } = useAccordionStep();
-  useEffect(() => {
-    completeStep(stepText);
-  }, [completeStep, stepText]);
+function DatasetsTable({ datasets, expandedContent = CellsCharts }: DatasetsTableProps) {
   const heightRef = useRef<HTMLTableElement>(null);
 
   const props = useExpandSpring(heightRef, initialHeight, datasets?.length > 0);
