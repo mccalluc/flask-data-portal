@@ -1,0 +1,2078 @@
+$schema: http://json-schema.org/schema#
+additionalProperties: false
+properties:
+  ancestor_ids:
+    items:
+      type: string
+    type: array
+  ancestors:
+    items:
+      additionalProperties: false
+      properties:
+        created_by_user_displayname:
+          type: string
+        created_by_user_email:
+          type: string
+        created_timestamp:
+          type: integer
+        data_access_level:
+          type: string
+        description:
+          type: string
+        entity_type:
+          type: string
+        group_uuid:
+          type: string
+        hubmap_id:
+          type: string
+        image_file_metadata:
+          items:
+            additionalProperties: false
+            properties:
+              description:
+                type: string
+              filepath:
+                type: string
+            required:
+            - description
+            - filepath
+            type: object
+          type: array
+        lab_donor_id:
+          type: string
+        lab_tissue_sample_id:
+          type: string
+        label:
+          type: string
+        last_modified_timestamp:
+          type: integer
+        metadata:
+          additionalProperties: false
+          properties:
+            PPID:
+              type: string
+            Preservation_condition:
+              type: string
+            Preservation_media:
+              type: string
+            cold_ischemia_time_unit:
+              type: string
+            cold_ischemia_time_value:
+              type: string
+            health_status:
+              type: string
+            living_donor_data:
+              items:
+                additionalProperties: false
+                properties:
+                  code:
+                    type: string
+                  concept_id:
+                    type: string
+                  data_type:
+                    type: string
+                  data_value:
+                    type: string
+                  end_datetime:
+                    type: string
+                  graph_version:
+                    type: string
+                  grouping_code:
+                    type: string
+                  grouping_concept:
+                    type: string
+                  grouping_concept_preferred_term:
+                    type: string
+                  grouping_sab:
+                    type: string
+                  numeric_operator:
+                    type: string
+                  preferred_term:
+                    type: string
+                  sab:
+                    type: string
+                  start_datetime:
+                    type: string
+                  units:
+                    type: string
+                required:
+                - code
+                - concept_id
+                - data_type
+                - data_value
+                - end_datetime
+                - graph_version
+                - grouping_code
+                - grouping_concept
+                - grouping_concept_preferred_term
+                - grouping_sab
+                - numeric_operator
+                - preferred_term
+                - sab
+                - start_datetime
+                - units
+                type: object
+              type: array
+            organ_condition:
+              type: string
+            organ_donor_data:
+              items:
+                additionalProperties: false
+                properties:
+                  code:
+                    type: string
+                  concept_id:
+                    type: string
+                  data_type:
+                    type: string
+                  data_value:
+                    type: string
+                  end_datetime:
+                    type: string
+                  graph_version:
+                    type: string
+                  grouping_code:
+                    type: string
+                  grouping_concept:
+                    type: string
+                  grouping_concept_preferred_term:
+                    type: string
+                  grouping_sab:
+                    type: string
+                  numeric_operator:
+                    type: string
+                  preferred_term:
+                    type: string
+                  sab:
+                    type: string
+                  start_datetime:
+                    type: string
+                  units:
+                    type: string
+                required:
+                - code
+                - concept_id
+                - data_type
+                - data_value
+                - end_datetime
+                - graph_version
+                - grouping_code
+                - grouping_concept
+                - grouping_concept_preferred_term
+                - grouping_sab
+                - numeric_operator
+                - preferred_term
+                - sab
+                - start_datetime
+                - units
+                type: object
+              type: array
+            pathologist_report:
+              type: string
+            perfusion_solution:
+              type: string
+            procedure_date:
+              type: string
+            sample_id:
+              type: string
+            specimen_preservation_temperature:
+              type: string
+            specimen_quality_criteria:
+              type: string
+            specimen_tumor_distance_unit:
+              type: string
+            specimen_tumor_distance_value:
+              type: string
+            vital_state:
+              type: string
+            warm_ischemia_time_unit:
+              type: string
+            warm_ischemia_time_value:
+              type: string
+          type: object
+        organ:
+          type: string
+        portal_metadata_upload_files:
+          items:
+            additionalProperties: false
+            properties:
+              description:
+                type: string
+              filepath:
+                type: string
+            required:
+            - description
+            - filepath
+            type: object
+          type: array
+        protocol_url:
+          type: string
+        rui_location:
+          type: string
+        specimen_type:
+          type: string
+        submission_id:
+          type: string
+        tissue_type:
+          type: string
+        uuid:
+          type: string
+        visit:
+          type: string
+      required:
+      - created_by_user_displayname
+      - created_by_user_email
+      - created_timestamp
+      - data_access_level
+      - entity_type
+      - group_uuid
+      - hubmap_id
+      - last_modified_timestamp
+      - protocol_url
+      - submission_id
+      - uuid
+      type: object
+    type: array
+  created_by_user_displayname:
+    type: string
+  created_by_user_email:
+    type: string
+  created_timestamp:
+    type: integer
+  data_access_level:
+    type: string
+  descendant_ids:
+    items:
+      type: string
+    type: array
+  descendants:
+    items:
+      additionalProperties: false
+      properties:
+        contacts:
+          items:
+            additionalProperties: false
+            properties:
+              affiliation:
+                type: string
+              first_name:
+                type: string
+              is_contact:
+                type: string
+              last_name:
+                type: string
+              middle_name_or_initia:
+                type: string
+              middle_name_or_initial:
+                type: string
+              name:
+                type: string
+              orc_id:
+                type: string
+              orcid_id:
+                type: string
+              version:
+                type: string
+            required:
+            - affiliation
+            - first_name
+            - last_name
+            - name
+            type: object
+          type: array
+        contains_human_genetic_sequences:
+          type: boolean
+        contributors:
+          items:
+            additionalProperties: false
+            properties:
+              affiliation:
+                type: string
+              first_name:
+                type: string
+              is_contact:
+                type: string
+              last_name:
+                type: string
+              middle_name_or_initial:
+                type: string
+              name:
+                type: string
+              orc_id:
+                type: string
+              orcid_id:
+                type: string
+              version:
+                type: string
+            required:
+            - affiliation
+            - first_name
+            - last_name
+            - name
+            type: object
+          type: array
+        created_by_user_displayname:
+          type: string
+        created_by_user_email:
+          type: string
+        created_timestamp:
+          type: integer
+        data_access_level:
+          type: string
+        data_types:
+          items:
+            type: string
+          type: array
+        dataset_info:
+          type: string
+        description:
+          type: string
+        doi_url:
+          type: string
+        entity_type:
+          type: string
+        files:
+          items:
+            additionalProperties: false
+            properties:
+              description:
+                type: string
+              edam_term:
+                type: string
+              is_qa_qc:
+                type: boolean
+              rel_path:
+                type: string
+              size:
+                type: integer
+              type:
+                type: string
+            required:
+            - description
+            - edam_term
+            - rel_path
+            - size
+            - type
+            type: object
+          type: array
+        group_uuid:
+          type: string
+        hubmap_id:
+          type: string
+        image_file_metadata:
+          items:
+            additionalProperties: false
+            properties:
+              description:
+                type: string
+              filepath:
+                type: string
+            required:
+            - description
+            - filepath
+            type: object
+          type: array
+        lab_dataset_id:
+          type: string
+        lab_tissue_sample_id:
+          type: string
+        last_modified_timestamp:
+          type: integer
+        metadata:
+          additionalProperties: false
+          properties:
+            PPID:
+              type: string
+            Preservation_condition:
+              type: string
+            Preservation_media:
+              type: string
+            cold_ischemia_time_unit:
+              type: string
+            cold_ischemia_time_value:
+              type: string
+            dag_provenance_list:
+              items:
+                additionalProperties: false
+                properties:
+                  hash:
+                    type: string
+                  name:
+                    type: string
+                  origin:
+                    type: string
+                required:
+                - hash
+                - origin
+                type: object
+              type: array
+            extra_metadata:
+              additionalProperties: false
+              properties:
+                collectiontype:
+                  type: string
+              required:
+              - collectiontype
+              type: object
+            files:
+              items:
+                additionalProperties: false
+                properties:
+                  description:
+                    type: string
+                  edam_term:
+                    type: string
+                  is_qa_qc:
+                    type: boolean
+                  rel_path:
+                    type: string
+                  size:
+                    type: integer
+                  type:
+                    type: string
+                required:
+                - description
+                - edam_term
+                - rel_path
+                - size
+                - type
+                type: object
+              type: array
+            files_info_alt_path:
+              type: string
+            health_status:
+              type: string
+            metadata:
+              additionalProperties: false
+              properties:
+                _from_metadatatsv:
+                  type: boolean
+                ablation_distance_between_shots_x_units:
+                  type: string
+                ablation_distance_between_shots_x_value:
+                  type: string
+                ablation_distance_between_shots_y_units:
+                  type: string
+                ablation_distance_between_shots_y_value:
+                  type: string
+                ablation_frequency_unit:
+                  type: string
+                ablation_frequency_value:
+                  type: string
+                acquisition_id:
+                  type: string
+                acquisition_instrument_model:
+                  type: string
+                acquisition_instrument_vendor:
+                  type: string
+                analyte_class:
+                  type: string
+                antibodies_path:
+                  type: string
+                assay_category:
+                  type: string
+                assay_type:
+                  type: string
+                bead_barcode_offset:
+                  type: string
+                bead_barcode_read:
+                  type: string
+                bead_barcode_size:
+                  type: string
+                bulk_atac_cell_isolation_protocols_io_doi:
+                  type: string
+                bulk_rna_isolation_protocols_io_doi:
+                  type: string
+                bulk_rna_isolation_quality_metric_value:
+                  type: string
+                bulk_rna_yield_units_per_tissue_unit:
+                  type: string
+                bulk_rna_yield_value:
+                  type: string
+                bulk_transposition_input_number_nuclei:
+                  type: string
+                cell_barcode_offset:
+                  type: string
+                cell_barcode_read:
+                  type: string
+                cell_barcode_size:
+                  type: string
+                collectiontype:
+                  type: string
+                contributors_path:
+                  type: string
+                data_collection_mode:
+                  type: string
+                data_path:
+                  type: string
+                data_precision_bytes:
+                  type: string
+                description:
+                  type: string
+                dms:
+                  type: string
+                dna_assay_input_unit:
+                  type: string
+                dna_assay_input_value:
+                  type: string
+                donor_id:
+                  type: string
+                dual_count_start:
+                  type: string
+                end_datetime:
+                  type: string
+                execution_datetime:
+                  type: string
+                expected_cell_count:
+                  type: string
+                gdna_fragmentation_quality_assurance:
+                  type: string
+                increment_z_unit:
+                  type: string
+                increment_z_value:
+                  type: string
+                is_targeted:
+                  type: string
+                is_technical_replicate:
+                  type: string
+                labeling:
+                  type: string
+                lc_column_model:
+                  type: string
+                lc_column_vendor:
+                  type: string
+                lc_flow_rate_unit:
+                  type: string
+                lc_flow_rate_value:
+                  type: string
+                lc_gradient:
+                  type: string
+                lc_id_unit:
+                  type: string
+                lc_id_value:
+                  type: string
+                lc_instrument_model:
+                  type: string
+                lc_instrument_vendor:
+                  type: string
+                lc_length_unit:
+                  type: string
+                lc_length_value:
+                  type: string
+                lc_mobile_phase_a:
+                  type: string
+                lc_mobile_phase_b:
+                  type: string
+                lc_resin:
+                  type: string
+                lc_temp_unit:
+                  type: string
+                lc_temp_value:
+                  type: string
+                library_adapter_sequence:
+                  type: string
+                library_average_fragment_size:
+                  type: string
+                library_concentration_unit:
+                  type: string
+                library_concentration_value:
+                  type: string
+                library_construction_method:
+                  type: string
+                library_construction_protocols_io_doi:
+                  type: string
+                library_creation_date:
+                  type: string
+                library_final_yield:
+                  type: string
+                library_final_yield_unit:
+                  type: string
+                library_final_yield_value:
+                  type: string
+                library_id:
+                  type: string
+                library_layout:
+                  type: string
+                library_pcr_cycles:
+                  type: string
+                library_pcr_cycles_for_sample_index:
+                  type: string
+                library_preparation_kit:
+                  type: string
+                mass_resolving_power:
+                  type: string
+                max_x_width_unit:
+                  type: string
+                max_x_width_value:
+                  type: string
+                max_y_height_unit:
+                  type: string
+                max_y_height_value:
+                  type: string
+                metadata_path:
+                  type: string
+                ms_scan_mode:
+                  type: string
+                ms_source:
+                  type: string
+                mz_range_high_value:
+                  type: string
+                mz_range_low_value:
+                  type: string
+                mz_resolving_power:
+                  type: string
+                number_of_antibodies:
+                  type: string
+                number_of_barcode_probes:
+                  type: string
+                number_of_barcode_regions_per_barcode_probe:
+                  type: string
+                number_of_channels:
+                  type: string
+                number_of_cycles:
+                  type: string
+                number_of_imaging_rounds:
+                  type: string
+                number_of_pseudocolors_per_channel:
+                  type: string
+                number_of_readout_probes_per_channel:
+                  type: string
+                number_of_sections:
+                  type: string
+                operator:
+                  type: string
+                operator_email:
+                  type: string
+                overall_protocols_io_doi:
+                  type: string
+                pi:
+                  type: string
+                pi_email:
+                  type: string
+                polarity:
+                  type: string
+                preparation_instrument_model:
+                  type: string
+                preparation_instrument_vendor:
+                  type: string
+                preparation_maldi_matrix:
+                  type: string
+                preparation_type:
+                  type: string
+                processing_protocols_io_doi:
+                  type: string
+                processing_search:
+                  type: string
+                protocols_io_doi:
+                  type: string
+                puck_id:
+                  type: string
+                range_z_unit:
+                  type: string
+                range_z_value:
+                  type: string
+                reagent_prep_protocols_io_doi:
+                  type: string
+                resolution_x_unit:
+                  type: string
+                resolution_x_value:
+                  type: string
+                resolution_y_unit:
+                  type: string
+                resolution_y_value:
+                  type: string
+                resolution_z_unit:
+                  type: string
+                resolution_z_value:
+                  type: string
+                rnaseq_assay_input:
+                  type: string
+                rnaseq_assay_input_unit:
+                  type: string
+                rnaseq_assay_input_value:
+                  type: string
+                rnaseq_assay_method:
+                  type: string
+                roi_description:
+                  type: string
+                roi_id:
+                  type: string
+                sample_quality_metric:
+                  type: string
+                sc_isolation_cell_number:
+                  type: string
+                sc_isolation_enrichment:
+                  type: string
+                sc_isolation_entity:
+                  type: string
+                sc_isolation_protocols_io_doi:
+                  type: string
+                sc_isolation_quality_metric:
+                  type: string
+                sc_isolation_tissue_dissociation:
+                  type: string
+                section_prep_protocols_io_doi:
+                  type: string
+                segment_data_format:
+                  type: string
+                sequencing_phix_percent:
+                  type: string
+                sequencing_read_format:
+                  type: string
+                sequencing_read_percent_q30:
+                  type: string
+                sequencing_reagent_kit:
+                  type: string
+                signal_type:
+                  type: string
+                source_project:
+                  type: string
+                stain:
+                  type: string
+                start_datetime:
+                  type: string
+                step_z_value:
+                  type: string
+                tissue_id:
+                  type: string
+                transposition_input:
+                  type: string
+                transposition_kit_number:
+                  type: string
+                transposition_method:
+                  type: string
+                transposition_transposase_source:
+                  type: string
+                umi_offset:
+                  type: string
+                umi_read:
+                  type: string
+                umi_size:
+                  type: string
+                version:
+                  type: string
+              required:
+              - acquisition_instrument_model
+              - acquisition_instrument_vendor
+              - assay_category
+              - assay_type
+              - data_path
+              - donor_id
+              - execution_datetime
+              - is_targeted
+              - pi
+              - pi_email
+              - protocols_io_doi
+              - tissue_id
+              type: object
+            organ_condition:
+              type: string
+            pathologist_report:
+              type: string
+            perfusion_solution:
+              type: string
+            procedure_date:
+              type: string
+            sample_id:
+              type: string
+            specimen_preservation_temperature:
+              type: string
+            specimen_quality_criteria:
+              type: string
+            specimen_tumor_distance_unit:
+              type: string
+            specimen_tumor_distance_value:
+              type: string
+            thumbnail_file_abs_path:
+              type: string
+            vital_state:
+              type: string
+            warm_ischemia_time_unit:
+              type: string
+            warm_ischemia_time_value:
+              type: string
+          type: object
+        next_revision_uuid:
+          type: string
+        portal_metadata_upload_files:
+          items:
+            additionalProperties: false
+            properties:
+              description:
+                type: string
+              filepath:
+                type: string
+            required:
+            - description
+            - filepath
+            type: object
+          type: array
+        previous_revision_uuid:
+          type: string
+        protocol_url:
+          type: string
+        provider_info:
+          type: string
+        published_timestamp:
+          type: integer
+        registered_doi:
+          type: string
+        rui_location:
+          type: string
+        specimen_type:
+          type: string
+        specimen_type_other:
+          type: string
+        status:
+          type: string
+        submission_id:
+          type: string
+        thumbnail_file:
+          additionalProperties: false
+          properties:
+            file_uuid:
+              type: string
+            filename:
+              type: string
+          required:
+          - file_uuid
+          - filename
+          type: object
+        tissue_type:
+          type: string
+        title:
+          type: string
+        uuid:
+          type: string
+      required:
+      - created_by_user_displayname
+      - created_by_user_email
+      - created_timestamp
+      - data_access_level
+      - entity_type
+      - group_uuid
+      - hubmap_id
+      - last_modified_timestamp
+      - uuid
+      type: object
+    type: array
+  description:
+    type: string
+  display_subtype:
+    type: string
+  donor:
+    additionalProperties: false
+    properties:
+      created_by_user_displayname:
+        type: string
+      created_by_user_email:
+        type: string
+      created_timestamp:
+        type: integer
+      data_access_level:
+        type: string
+      description:
+        type: string
+      entity_type:
+        type: string
+      group_uuid:
+        type: string
+      hubmap_id:
+        type: string
+      lab_donor_id:
+        type: string
+      label:
+        type: string
+      last_modified_timestamp:
+        type: integer
+      metadata:
+        additionalProperties: false
+        properties:
+          living_donor_data:
+            items:
+              additionalProperties: false
+              properties:
+                code:
+                  type: string
+                concept_id:
+                  type: string
+                data_type:
+                  type: string
+                data_value:
+                  type: string
+                end_datetime:
+                  type: string
+                graph_version:
+                  type: string
+                grouping_code:
+                  type: string
+                grouping_concept:
+                  type: string
+                grouping_concept_preferred_term:
+                  type: string
+                grouping_sab:
+                  type: string
+                numeric_operator:
+                  type: string
+                preferred_term:
+                  type: string
+                sab:
+                  type: string
+                start_datetime:
+                  type: string
+                units:
+                  type: string
+              required:
+              - code
+              - concept_id
+              - data_type
+              - data_value
+              - end_datetime
+              - graph_version
+              - grouping_code
+              - grouping_concept
+              - grouping_concept_preferred_term
+              - grouping_sab
+              - numeric_operator
+              - preferred_term
+              - sab
+              - start_datetime
+              - units
+              type: object
+            type: array
+          organ_donor_data:
+            items:
+              additionalProperties: false
+              properties:
+                code:
+                  type: string
+                concept_id:
+                  type: string
+                data_type:
+                  type: string
+                data_value:
+                  type: string
+                end_datetime:
+                  type: string
+                graph_version:
+                  type: string
+                grouping_code:
+                  type: string
+                grouping_concept:
+                  type: string
+                grouping_concept_preferred_term:
+                  type: string
+                grouping_sab:
+                  type: string
+                numeric_operator:
+                  type: string
+                preferred_term:
+                  type: string
+                sab:
+                  type: string
+                start_datetime:
+                  type: string
+                units:
+                  type: string
+              required:
+              - code
+              - concept_id
+              - data_type
+              - data_value
+              - end_datetime
+              - graph_version
+              - grouping_code
+              - grouping_concept
+              - grouping_concept_preferred_term
+              - grouping_sab
+              - numeric_operator
+              - preferred_term
+              - sab
+              - start_datetime
+              - units
+              type: object
+            type: array
+        type: object
+      portal_metadata_upload_files:
+        items:
+          additionalProperties: false
+          properties:
+            description:
+              type: string
+            filepath:
+              type: string
+          required:
+          - description
+          - filepath
+          type: object
+        type: array
+      protocol_url:
+        type: string
+      submission_id:
+        type: string
+      uuid:
+        type: string
+    required:
+    - created_by_user_displayname
+    - created_by_user_email
+    - created_timestamp
+    - data_access_level
+    - entity_type
+    - group_uuid
+    - hubmap_id
+    - label
+    - last_modified_timestamp
+    - protocol_url
+    - submission_id
+    - uuid
+    type: object
+  entity_type:
+    type: string
+  group_name:
+    type: string
+  group_uuid:
+    type: string
+  hubmap_id:
+    type: string
+  image_file_metadata:
+    items:
+      additionalProperties: false
+      properties:
+        description:
+          type: string
+        filepath:
+          type: string
+      required:
+      - description
+      - filepath
+      type: object
+    type: array
+  immediate_ancestors:
+    items:
+      additionalProperties: false
+      properties:
+        created_by_user_displayname:
+          type: string
+        created_by_user_email:
+          type: string
+        created_timestamp:
+          type: integer
+        data_access_level:
+          type: string
+        description:
+          type: string
+        entity_type:
+          type: string
+        group_uuid:
+          type: string
+        hubmap_id:
+          type: string
+        image_file_metadata:
+          items:
+            additionalProperties: false
+            properties:
+              description:
+                type: string
+              filepath:
+                type: string
+            required:
+            - description
+            - filepath
+            type: object
+          type: array
+        lab_donor_id:
+          type: string
+        lab_tissue_sample_id:
+          type: string
+        label:
+          type: string
+        last_modified_timestamp:
+          type: integer
+        metadata:
+          additionalProperties: false
+          properties:
+            PPID:
+              type: string
+            Preservation_condition:
+              type: string
+            Preservation_media:
+              type: string
+            cold_ischemia_time_unit:
+              type: string
+            cold_ischemia_time_value:
+              type: string
+            health_status:
+              type: string
+            living_donor_data:
+              items:
+                additionalProperties: false
+                properties:
+                  code:
+                    type: string
+                  concept_id:
+                    type: string
+                  data_type:
+                    type: string
+                  data_value:
+                    type: string
+                  end_datetime:
+                    type: string
+                  graph_version:
+                    type: string
+                  grouping_code:
+                    type: string
+                  grouping_concept:
+                    type: string
+                  grouping_concept_preferred_term:
+                    type: string
+                  grouping_sab:
+                    type: string
+                  numeric_operator:
+                    type: string
+                  preferred_term:
+                    type: string
+                  sab:
+                    type: string
+                  start_datetime:
+                    type: string
+                  units:
+                    type: string
+                required:
+                - code
+                - concept_id
+                - data_type
+                - data_value
+                - end_datetime
+                - graph_version
+                - grouping_code
+                - grouping_concept
+                - grouping_concept_preferred_term
+                - grouping_sab
+                - numeric_operator
+                - preferred_term
+                - sab
+                - start_datetime
+                - units
+                type: object
+              type: array
+            organ_condition:
+              type: string
+            organ_donor_data:
+              items:
+                additionalProperties: false
+                properties:
+                  code:
+                    type: string
+                  concept_id:
+                    type: string
+                  data_type:
+                    type: string
+                  data_value:
+                    type: string
+                  end_datetime:
+                    type: string
+                  graph_version:
+                    type: string
+                  grouping_code:
+                    type: string
+                  grouping_concept:
+                    type: string
+                  grouping_concept_preferred_term:
+                    type: string
+                  grouping_sab:
+                    type: string
+                  numeric_operator:
+                    type: string
+                  preferred_term:
+                    type: string
+                  sab:
+                    type: string
+                  start_datetime:
+                    type: string
+                  units:
+                    type: string
+                required:
+                - code
+                - concept_id
+                - data_type
+                - data_value
+                - end_datetime
+                - graph_version
+                - grouping_code
+                - grouping_concept
+                - grouping_concept_preferred_term
+                - grouping_sab
+                - numeric_operator
+                - preferred_term
+                - sab
+                - start_datetime
+                - units
+                type: object
+              type: array
+            pathologist_report:
+              type: string
+            perfusion_solution:
+              type: string
+            procedure_date:
+              type: string
+            sample_id:
+              type: string
+            specimen_preservation_temperature:
+              type: string
+            specimen_quality_criteria:
+              type: string
+            specimen_tumor_distance_unit:
+              type: string
+            specimen_tumor_distance_value:
+              type: string
+            vital_state:
+              type: string
+            warm_ischemia_time_unit:
+              type: string
+            warm_ischemia_time_value:
+              type: string
+          type: object
+        organ:
+          type: string
+        portal_metadata_upload_files:
+          items:
+            additionalProperties: false
+            properties:
+              description:
+                type: string
+              filepath:
+                type: string
+            required:
+            - description
+            - filepath
+            type: object
+          type: array
+        protocol_url:
+          type: string
+        rui_location:
+          type: string
+        specimen_type:
+          type: string
+        submission_id:
+          type: string
+        tissue_type:
+          type: string
+        uuid:
+          type: string
+        visit:
+          type: string
+      required:
+      - created_by_user_displayname
+      - created_by_user_email
+      - created_timestamp
+      - data_access_level
+      - entity_type
+      - group_uuid
+      - hubmap_id
+      - last_modified_timestamp
+      - protocol_url
+      - submission_id
+      - uuid
+      type: object
+    type: array
+  immediate_descendants:
+    items:
+      additionalProperties: false
+      properties:
+        contacts:
+          items:
+            additionalProperties: false
+            properties:
+              affiliation:
+                type: string
+              first_name:
+                type: string
+              is_contact:
+                type: string
+              last_name:
+                type: string
+              middle_name_or_initia:
+                type: string
+              middle_name_or_initial:
+                type: string
+              name:
+                type: string
+              orc_id:
+                type: string
+              orcid_id:
+                type: string
+              version:
+                type: string
+            required:
+            - affiliation
+            - first_name
+            - last_name
+            - name
+            type: object
+          type: array
+        contains_human_genetic_sequences:
+          type: boolean
+        contributors:
+          items:
+            additionalProperties: false
+            properties:
+              affiliation:
+                type: string
+              first_name:
+                type: string
+              is_contact:
+                type: string
+              last_name:
+                type: string
+              middle_name_or_initial:
+                type: string
+              name:
+                type: string
+              orc_id:
+                type: string
+              orcid_id:
+                type: string
+              version:
+                type: string
+            required:
+            - affiliation
+            - first_name
+            - last_name
+            - name
+            type: object
+          type: array
+        created_by_user_displayname:
+          type: string
+        created_by_user_email:
+          type: string
+        created_timestamp:
+          type: integer
+        data_access_level:
+          type: string
+        data_types:
+          items:
+            type: string
+          type: array
+        dataset_info:
+          type: string
+        description:
+          type: string
+        doi_url:
+          type: string
+        entity_type:
+          type: string
+        files:
+          type: array
+        group_uuid:
+          type: string
+        hubmap_id:
+          type: string
+        image_file_metadata:
+          items:
+            additionalProperties: false
+            properties:
+              description:
+                type: string
+              filepath:
+                type: string
+            required:
+            - description
+            - filepath
+            type: object
+          type: array
+        lab_dataset_id:
+          type: string
+        lab_tissue_sample_id:
+          type: string
+        last_modified_timestamp:
+          type: integer
+        metadata:
+          additionalProperties: false
+          properties:
+            PPID:
+              type: string
+            Preservation_condition:
+              type: string
+            Preservation_media:
+              type: string
+            cold_ischemia_time_unit:
+              type: string
+            cold_ischemia_time_value:
+              type: string
+            dag_provenance_list:
+              items:
+                additionalProperties: false
+                properties:
+                  hash:
+                    type: string
+                  origin:
+                    type: string
+                required:
+                - hash
+                - origin
+                type: object
+              type: array
+            extra_metadata:
+              additionalProperties: false
+              properties:
+                collectiontype:
+                  type: string
+              required:
+              - collectiontype
+              type: object
+            files:
+              type: array
+            health_status:
+              type: string
+            metadata:
+              additionalProperties: false
+              properties:
+                _from_metadatatsv:
+                  type: boolean
+                ablation_distance_between_shots_x_units:
+                  type: string
+                ablation_distance_between_shots_x_value:
+                  type: string
+                ablation_distance_between_shots_y_units:
+                  type: string
+                ablation_distance_between_shots_y_value:
+                  type: string
+                ablation_frequency_unit:
+                  type: string
+                ablation_frequency_value:
+                  type: string
+                acquisition_id:
+                  type: string
+                acquisition_instrument_model:
+                  type: string
+                acquisition_instrument_vendor:
+                  type: string
+                analyte_class:
+                  type: string
+                antibodies_path:
+                  type: string
+                assay_category:
+                  type: string
+                assay_type:
+                  type: string
+                bead_barcode_offset:
+                  type: string
+                bead_barcode_read:
+                  type: string
+                bead_barcode_size:
+                  type: string
+                bulk_atac_cell_isolation_protocols_io_doi:
+                  type: string
+                bulk_rna_isolation_protocols_io_doi:
+                  type: string
+                bulk_rna_isolation_quality_metric_value:
+                  type: string
+                bulk_rna_yield_units_per_tissue_unit:
+                  type: string
+                bulk_rna_yield_value:
+                  type: string
+                bulk_transposition_input_number_nuclei:
+                  type: string
+                cell_barcode_offset:
+                  type: string
+                cell_barcode_read:
+                  type: string
+                cell_barcode_size:
+                  type: string
+                collectiontype:
+                  type: string
+                contributors_path:
+                  type: string
+                data_collection_mode:
+                  type: string
+                data_path:
+                  type: string
+                data_precision_bytes:
+                  type: string
+                description:
+                  type: string
+                dms:
+                  type: string
+                dna_assay_input_unit:
+                  type: string
+                dna_assay_input_value:
+                  type: string
+                donor_id:
+                  type: string
+                dual_count_start:
+                  type: string
+                end_datetime:
+                  type: string
+                execution_datetime:
+                  type: string
+                expected_cell_count:
+                  type: string
+                gdna_fragmentation_quality_assurance:
+                  type: string
+                increment_z_unit:
+                  type: string
+                increment_z_value:
+                  type: string
+                is_targeted:
+                  type: string
+                is_technical_replicate:
+                  type: string
+                labeling:
+                  type: string
+                lc_column_model:
+                  type: string
+                lc_column_vendor:
+                  type: string
+                lc_flow_rate_unit:
+                  type: string
+                lc_flow_rate_value:
+                  type: string
+                lc_gradient:
+                  type: string
+                lc_id_unit:
+                  type: string
+                lc_id_value:
+                  type: string
+                lc_instrument_model:
+                  type: string
+                lc_instrument_vendor:
+                  type: string
+                lc_length_unit:
+                  type: string
+                lc_length_value:
+                  type: string
+                lc_mobile_phase_a:
+                  type: string
+                lc_mobile_phase_b:
+                  type: string
+                lc_resin:
+                  type: string
+                lc_temp_unit:
+                  type: string
+                lc_temp_value:
+                  type: string
+                library_adapter_sequence:
+                  type: string
+                library_average_fragment_size:
+                  type: string
+                library_concentration_unit:
+                  type: string
+                library_concentration_value:
+                  type: string
+                library_construction_method:
+                  type: string
+                library_construction_protocols_io_doi:
+                  type: string
+                library_creation_date:
+                  type: string
+                library_final_yield:
+                  type: string
+                library_final_yield_unit:
+                  type: string
+                library_final_yield_value:
+                  type: string
+                library_id:
+                  type: string
+                library_layout:
+                  type: string
+                library_pcr_cycles:
+                  type: string
+                library_pcr_cycles_for_sample_index:
+                  type: string
+                library_preparation_kit:
+                  type: string
+                mass_resolving_power:
+                  type: string
+                max_x_width_unit:
+                  type: string
+                max_x_width_value:
+                  type: string
+                max_y_height_unit:
+                  type: string
+                max_y_height_value:
+                  type: string
+                metadata_path:
+                  type: string
+                ms_scan_mode:
+                  type: string
+                ms_source:
+                  type: string
+                mz_range_high_value:
+                  type: string
+                mz_range_low_value:
+                  type: string
+                mz_resolving_power:
+                  type: string
+                number_of_antibodies:
+                  type: string
+                number_of_barcode_probes:
+                  type: string
+                number_of_barcode_regions_per_barcode_probe:
+                  type: string
+                number_of_channels:
+                  type: string
+                number_of_cycles:
+                  type: string
+                number_of_imaging_rounds:
+                  type: string
+                number_of_pseudocolors_per_channel:
+                  type: string
+                number_of_readout_probes_per_channel:
+                  type: string
+                number_of_sections:
+                  type: string
+                operator:
+                  type: string
+                operator_email:
+                  type: string
+                overall_protocols_io_doi:
+                  type: string
+                pi:
+                  type: string
+                pi_email:
+                  type: string
+                polarity:
+                  type: string
+                preparation_instrument_model:
+                  type: string
+                preparation_instrument_vendor:
+                  type: string
+                preparation_maldi_matrix:
+                  type: string
+                preparation_type:
+                  type: string
+                processing_protocols_io_doi:
+                  type: string
+                processing_search:
+                  type: string
+                protocols_io_doi:
+                  type: string
+                puck_id:
+                  type: string
+                range_z_unit:
+                  type: string
+                range_z_value:
+                  type: string
+                reagent_prep_protocols_io_doi:
+                  type: string
+                resolution_x_unit:
+                  type: string
+                resolution_x_value:
+                  type: string
+                resolution_y_unit:
+                  type: string
+                resolution_y_value:
+                  type: string
+                resolution_z_unit:
+                  type: string
+                resolution_z_value:
+                  type: string
+                rnaseq_assay_input:
+                  type: string
+                rnaseq_assay_input_unit:
+                  type: string
+                rnaseq_assay_input_value:
+                  type: string
+                rnaseq_assay_method:
+                  type: string
+                roi_description:
+                  type: string
+                roi_id:
+                  type: string
+                sample_quality_metric:
+                  type: string
+                sc_isolation_cell_number:
+                  type: string
+                sc_isolation_enrichment:
+                  type: string
+                sc_isolation_entity:
+                  type: string
+                sc_isolation_protocols_io_doi:
+                  type: string
+                sc_isolation_quality_metric:
+                  type: string
+                sc_isolation_tissue_dissociation:
+                  type: string
+                section_prep_protocols_io_doi:
+                  type: string
+                segment_data_format:
+                  type: string
+                sequencing_phix_percent:
+                  type: string
+                sequencing_read_format:
+                  type: string
+                sequencing_read_percent_q30:
+                  type: string
+                sequencing_reagent_kit:
+                  type: string
+                signal_type:
+                  type: string
+                source_project:
+                  type: string
+                stain:
+                  type: string
+                start_datetime:
+                  type: string
+                step_z_value:
+                  type: string
+                tissue_id:
+                  type: string
+                transposition_input:
+                  type: string
+                transposition_kit_number:
+                  type: string
+                transposition_method:
+                  type: string
+                transposition_transposase_source:
+                  type: string
+                umi_offset:
+                  type: string
+                umi_read:
+                  type: string
+                umi_size:
+                  type: string
+                version:
+                  type: string
+              required:
+              - acquisition_instrument_model
+              - acquisition_instrument_vendor
+              - assay_category
+              - assay_type
+              - data_path
+              - donor_id
+              - execution_datetime
+              - is_targeted
+              - pi
+              - pi_email
+              - protocols_io_doi
+              - tissue_id
+              type: object
+            organ_condition:
+              type: string
+            pathologist_report:
+              type: string
+            perfusion_solution:
+              type: string
+            procedure_date:
+              type: string
+            sample_id:
+              type: string
+            specimen_preservation_temperature:
+              type: string
+            specimen_quality_criteria:
+              type: string
+            specimen_tumor_distance_unit:
+              type: string
+            specimen_tumor_distance_value:
+              type: string
+            thumbnail_file_abs_path:
+              type: string
+            vital_state:
+              type: string
+            warm_ischemia_time_unit:
+              type: string
+            warm_ischemia_time_value:
+              type: string
+          type: object
+        portal_metadata_upload_files:
+          items:
+            additionalProperties: false
+            properties:
+              description:
+                type: string
+              filepath:
+                type: string
+            required:
+            - description
+            - filepath
+            type: object
+          type: array
+        protocol_url:
+          type: string
+        provider_info:
+          type: string
+        published_timestamp:
+          type: integer
+        registered_doi:
+          type: string
+        rui_location:
+          type: string
+        specimen_type:
+          type: string
+        specimen_type_other:
+          type: string
+        status:
+          type: string
+        submission_id:
+          type: string
+        thumbnail_file:
+          additionalProperties: false
+          properties:
+            file_uuid:
+              type: string
+            filename:
+              type: string
+          required:
+          - file_uuid
+          - filename
+          type: object
+        tissue_type:
+          type: string
+        uuid:
+          type: string
+      required:
+      - created_by_user_displayname
+      - created_by_user_email
+      - created_timestamp
+      - data_access_level
+      - entity_type
+      - group_uuid
+      - hubmap_id
+      - last_modified_timestamp
+      - uuid
+      type: object
+    type: array
+  index_version:
+    type: string
+  lab_tissue_sample_id:
+    type: string
+  last_modified_timestamp:
+    type: integer
+  metadata:
+    additionalProperties: false
+    properties:
+      PPID:
+        type: string
+      Preservation_condition:
+        type: string
+      Preservation_media:
+        type: string
+      cold_ischemia_time_unit:
+        type: string
+      cold_ischemia_time_value:
+        type: string
+      health_status:
+        type: string
+      organ_condition:
+        type: string
+      pathologist_report:
+        type: string
+      perfusion_solution:
+        type: string
+      procedure_date:
+        type: string
+      sample_id:
+        type: string
+      specimen_preservation_temperature:
+        type: string
+      specimen_quality_criteria:
+        type: string
+      specimen_tumor_distance_unit:
+        type: string
+      specimen_tumor_distance_value:
+        type: string
+      vital_state:
+        type: string
+      warm_ischemia_time_unit:
+        type: string
+      warm_ischemia_time_value:
+        type: string
+    required:
+    - cold_ischemia_time_unit
+    - cold_ischemia_time_value
+    - health_status
+    - organ_condition
+    - pathologist_report
+    - perfusion_solution
+    - specimen_preservation_temperature
+    - specimen_quality_criteria
+    - vital_state
+    - warm_ischemia_time_unit
+    - warm_ischemia_time_value
+    type: object
+  organ:
+    type: string
+  origin_sample:
+    additionalProperties: false
+    properties:
+      created_by_user_displayname:
+        type: string
+      created_by_user_email:
+        type: string
+      created_timestamp:
+        type: integer
+      data_access_level:
+        type: string
+      description:
+        type: string
+      entity_type:
+        type: string
+      group_uuid:
+        type: string
+      hubmap_id:
+        type: string
+      image_file_metadata:
+        items:
+          additionalProperties: false
+          properties:
+            description:
+              type: string
+            filepath:
+              type: string
+          required:
+          - description
+          - filepath
+          type: object
+        type: array
+      lab_tissue_sample_id:
+        type: string
+      last_modified_timestamp:
+        type: integer
+      metadata:
+        additionalProperties: false
+        properties:
+          cold_ischemia_time_unit:
+            type: string
+          cold_ischemia_time_value:
+            type: string
+          health_status:
+            type: string
+          organ_condition:
+            type: string
+          pathologist_report:
+            type: string
+          perfusion_solution:
+            type: string
+          procedure_date:
+            type: string
+          sample_id:
+            type: string
+          specimen_preservation_temperature:
+            type: string
+          specimen_quality_criteria:
+            type: string
+          specimen_tumor_distance_unit:
+            type: string
+          specimen_tumor_distance_value:
+            type: string
+          vital_state:
+            type: string
+          warm_ischemia_time_unit:
+            type: string
+          warm_ischemia_time_value:
+            type: string
+        required:
+        - cold_ischemia_time_unit
+        - cold_ischemia_time_value
+        - health_status
+        - organ_condition
+        - pathologist_report
+        - perfusion_solution
+        - procedure_date
+        - sample_id
+        - specimen_preservation_temperature
+        - specimen_quality_criteria
+        - specimen_tumor_distance_unit
+        - specimen_tumor_distance_value
+        - vital_state
+        - warm_ischemia_time_unit
+        - warm_ischemia_time_value
+        type: object
+      organ:
+        type: string
+      portal_metadata_upload_files:
+        items:
+          additionalProperties: false
+          properties:
+            description:
+              type: string
+            filepath:
+              type: string
+          required:
+          - description
+          - filepath
+          type: object
+        type: array
+      protocol_url:
+        type: string
+      specimen_type:
+        type: string
+      submission_id:
+        type: string
+      tissue_type:
+        type: string
+      uuid:
+        type: string
+      visit:
+        type: string
+    required:
+    - created_by_user_displayname
+    - created_by_user_email
+    - created_timestamp
+    - data_access_level
+    - entity_type
+    - group_uuid
+    - hubmap_id
+    - last_modified_timestamp
+    - organ
+    - protocol_url
+    - specimen_type
+    - submission_id
+    - tissue_type
+    - uuid
+    type: object
+  portal_metadata_upload_files:
+    items:
+      additionalProperties: false
+      properties:
+        description:
+          type: string
+        filepath:
+          type: string
+      required:
+      - description
+      - filepath
+      type: object
+    type: array
+  protocol_url:
+    type: string
+  rui_location:
+    type: string
+  specimen_type:
+    type: string
+  specimen_type_other:
+    type: string
+  submission_id:
+    type: string
+  tissue_type:
+    type: string
+  uuid:
+    type: string
+  visit:
+    type: string
+required:
+- ancestor_ids
+- ancestors
+- created_by_user_displayname
+- created_by_user_email
+- created_timestamp
+- data_access_level
+- descendant_ids
+- descendants
+- display_subtype
+- donor
+- entity_type
+- group_name
+- group_uuid
+- hubmap_id
+- immediate_ancestors
+- immediate_descendants
+- index_version
+- last_modified_timestamp
+- origin_sample
+- protocol_url
+- specimen_type
+- submission_id
+- tissue_type
+- uuid
+type: object

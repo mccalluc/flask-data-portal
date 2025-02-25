@@ -1,0 +1,26 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+type: object
+oneOf:
+- allOf:
+  # genson doesn't try to infer enum constraints.
+  # I also hoped that forcing an entity_type check early would be a speed improvement
+  # over checking it in the larger schema: It is faster, but not by much.
+  - properties:
+      entity_type:
+        enum: [Collection]
+  - $ref: entities/Collection.yaml
+- allOf:
+  - properties:
+      entity_type:
+        enum: [Dataset]
+  - $ref: entities/Dataset.yaml
+- allOf:
+  - properties:
+      entity_type:
+        enum: [Sample]
+  - $ref: entities/Sample.yaml
+- allOf:
+  - properties:
+      entity_type:
+        enum: [Donor]
+  - $ref: entities/Donor.yaml
