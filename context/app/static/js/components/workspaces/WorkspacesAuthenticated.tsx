@@ -1,7 +1,9 @@
 import React from 'react';
+import Stack from '@mui/material/Stack';
 
 import { useAppContext } from 'js/components/Contexts';
 
+import InvitationsList from './InvitationsList';
 import WorkspacesList from './WorkspacesList';
 
 function WorkspacesAuthenticated() {
@@ -11,7 +13,12 @@ function WorkspacesAuthenticated() {
     throw Error('The workspaces token request failed at login');
   }
 
-  return <WorkspacesList />;
+  return (
+    <Stack spacing={3}>
+      <InvitationsList />
+      <WorkspacesList />
+    </Stack>
+  );
 }
 
 export default WorkspacesAuthenticated;

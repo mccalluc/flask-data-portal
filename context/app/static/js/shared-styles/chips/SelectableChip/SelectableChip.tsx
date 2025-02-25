@@ -15,11 +15,12 @@ function SelectableChip({ label, onClick, disabled, isSelected, sx, ...rest }: S
       component="button"
       disabled={disabled}
       color={isSelected ? 'primary' : undefined}
-      icon={isSelected ? <CheckRoundedIcon /> : undefined}
+      icon={isSelected ? <CheckRoundedIcon fontSize="small" /> : undefined}
       variant={isSelected ? 'filled' : 'outlined'}
       sx={{
         ...sx,
         px: isSelected ? 0 : 1.5,
+        borderRadius: 4,
       }}
       {...rest}
     />

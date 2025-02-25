@@ -1,14 +1,14 @@
-import React, { PropsWithChildren } from 'react';
+import React, { ElementType, PropsWithChildren } from 'react';
 
 import SvgIcon from '@mui/icons-material/GetAppRounded';
 import MenuList from '@mui/material/MenuList';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import MenuItem from '@mui/material/MenuItem';
 
-import { WhiteBackgroundIconDropdownMenuButton } from 'js/shared-styles/buttons';
 import withDropdownMenuProvider from 'js/shared-styles/dropdowns/DropdownMenuProvider/withDropdownMenuProvider';
 import DropdownMenu from 'js/shared-styles/dropdowns/DropdownMenu';
 
+import { ButtonProps } from '@mui/material/Button';
 import { StyledSvgIcon, StyledTypography } from './style';
 
 interface IconDropdownMenuItemProps {
@@ -31,15 +31,21 @@ export function IconDropdownMenuItem({ icon, onClick, disabled, children }: Icon
 
 interface IconDropdownMenuProps {
   tooltip: string;
+  button: ElementType<ButtonProps & { menuID: string; tooltip: string }>;
   icon: typeof SvgIcon;
 }
 
-function IconDropdownMenu({ tooltip, icon, children }: PropsWithChildren<IconDropdownMenuProps>) {
+function IconDropdownMenu({
+  tooltip,
+  button: ButtonComponent,
+  icon,
+  children,
+}: PropsWithChildren<IconDropdownMenuProps>) {
   return (
     <>
-      <WhiteBackgroundIconDropdownMenuButton menuID={tooltip} tooltip={tooltip}>
+      <ButtonComponent menuID={tooltip} tooltip={tooltip}>
         <SvgIcon component={icon} />
-      </WhiteBackgroundIconDropdownMenuButton>
+      </ButtonComponent>
       <DropdownMenu id={`${tooltip}-menu`}>
         <MenuList id="menu-options">{children}</MenuList>
       </DropdownMenu>

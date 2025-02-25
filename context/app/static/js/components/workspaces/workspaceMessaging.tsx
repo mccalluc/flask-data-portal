@@ -8,7 +8,7 @@ import LabelledSectionText from 'js/shared-styles/sections/LabelledSectionText';
 import ContactUsLink from 'js/shared-styles/Links/ContactUsLink';
 import { Alert } from 'js/shared-styles/alerts';
 import LoginAlert from 'js/shared-styles/alerts/LoginAlert';
-import { InternalLink } from 'js/shared-styles/Links';
+import { InternalLink, OutboundLink } from 'js/shared-styles/Links';
 import OutboundIconLink from 'js/shared-styles/Links/iconLinks/OutboundIconLink';
 import RelevantPagesSection from 'js/shared-styles/sections/RelevantPagesSection';
 import LogInPanel from 'js/shared-styles/panels/LogInPanel';
@@ -30,7 +30,7 @@ function ContactUsForAccess() {
 
 const workspacesDescription = {
   title: 'What are workspaces?',
-  body: 'Workspaces enable lightweight exploration of public HuBMAP data and user-provided data using Python and R in a Jupyter Lab environment hosted by HuBMAP at no cost to community members.',
+  body: 'Workspaces provides a lightweight exploration platform tailored for researchers to easily access HuBMAP data and perform analyses directly within the portal. Effortlessly upload dataset files to a Jupyter notebook using provided templates to get started on analyzing HuBMAP data.',
 };
 
 const trackRelevantPage = (pageName: string) => {
@@ -73,8 +73,9 @@ const workspacesQuestionsSuggestions = {
   body: (
     <>
       Please be aware that certain limitations currently exist on this platform due to its simplified exploration
-      design. If you have any questions or suggestions about workspaces, contact us through the{' '}
-      <ContactUsLink> HuBMAP Help Desk. </ContactUsLink>
+      design. If you have any questions or suggestions about workspaces, submit feedback at the HuBMAP{' '}
+      <OutboundLink href="https://hubmapconsortium.slack.com/archives/C056RMNB1C6">#workspaces-feedback</OutboundLink>{' '}
+      Slack channel, or contact us through the <ContactUsLink>help desk</ContactUsLink>.
     </>
   ),
 };

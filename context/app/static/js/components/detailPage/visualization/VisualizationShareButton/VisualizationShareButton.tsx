@@ -8,6 +8,7 @@ import useVisualizationStore, { VisualizationStore } from 'js/stores/useVisualiz
 import { useTrackEntityPageEvent } from 'js/components/detailPage/useTrackEntityPageEvent';
 import IconDropdownMenu from 'js/shared-styles/dropdowns/IconDropdownMenu';
 import { useHandleCopyClick } from 'js/hooks/useCopyText';
+import { WhiteBackgroundIconDropdownMenuButton } from 'js/shared-styles/buttons';
 
 import { IconDropdownMenuItem } from 'js/shared-styles/dropdowns/IconDropdownMenu/IconDropdownMenu';
 import { createEmailWithUrl, getUrl } from './utils';
@@ -50,7 +51,7 @@ function VisualizationShareButton() {
   ];
 
   return (
-    <IconDropdownMenu tooltip="Share Visualization" icon={ShareIcon}>
+    <IconDropdownMenu tooltip="Share Visualization" icon={ShareIcon} button={WhiteBackgroundIconDropdownMenuButton}>
       {options.map((props) => (
         <IconDropdownMenuItem key={props.children} {...props} />
       ))}

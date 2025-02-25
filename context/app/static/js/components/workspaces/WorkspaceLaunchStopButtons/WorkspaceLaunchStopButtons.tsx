@@ -10,6 +10,7 @@ import { isWorkspaceAtDatasetLimit } from 'js/helpers/functions';
 import { MergedWorkspace, WorkspacesEventInfo } from 'js/components/workspaces/types';
 import { useLaunchWorkspaceDialog } from 'js/components/workspaces/LaunchWorkspaceDialog/hooks';
 import { useWorkspaceToasts } from 'js/components/workspaces/toastHooks';
+import { StyledLaunchButton } from 'js/components/workspaces/style';
 import { trackEvent } from 'js/helpers/trackers';
 
 interface WorkspaceButtonProps {
@@ -39,6 +40,7 @@ function StopWorkspaceButton({
     <ButtonComponent
       type="button"
       disabled={isStoppingWorkspace}
+      variant="contained"
       onClick={() => {
         handleStopWorkspace(workspace.id).catch((err) => {
           toastErrorStopWorkspace(workspace.name);
@@ -106,10 +108,7 @@ function WorkspaceLaunchStopButtons(props: WorkspaceButtonProps) {
     <Stack direction="row" spacing={2}>
       {showStop && <StopWorkspaceButton {...props} />}
       {showLaunch && (
-        <Button
-          type="button"
-          variant="contained"
-          color="primary"
+        <ButtonComponent
           onClick={() => {
             if (trackingInfo) {
               trackEvent({
@@ -121,12 +120,16 @@ function WorkspaceLaunchStopButtons(props: WorkspaceButtonProps) {
             launchOrOpenDialog(workspace);
           }}
         >
-          Launch Workspace
-        </Button>
+          Launch
+        </ButtonComponent>
       )}
     </Stack>
   );
 }
 
-export { StopWorkspaceAlert };
+function LaunchStopButton(props: ButtonProps) {
+  return <StyledLaunchButton {...props} />;
+}
+
+export { StopWorkspaceAlert, LaunchStopButton };
 export default WorkspaceLaunchStopButtons;

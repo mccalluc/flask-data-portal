@@ -7,6 +7,7 @@ import { trackEvent } from 'js/helpers/trackers';
 import { fetcher } from 'js/helpers/swr';
 import { useAppContext } from '../Contexts';
 import {
+  AllWorkspaceInvitations,
   Workspace,
   WorkspaceAPIResponse,
   WorkspaceAPIResponseWithoutData,
@@ -26,17 +27,19 @@ export const MAX_NUMBER_OF_WORKSPACE_DATASETS = 150;
  * @returns an API URL generator
  */
 export const apiUrls = (workspacesEndpoint: string) => ({
+  // Jobs
   get jobTypes(): string {
     return `${workspacesEndpoint}/job_types`;
-  },
-  get workspaces(): string {
-    return `${workspacesEndpoint}/workspaces`;
   },
   get jobs(): string {
     return `${workspacesEndpoint}/jobs`;
   },
-  createWorkspaceFromNotebookPath(path: string): string {
-    return `/notebooks/${path}`;
+  stopJob(jobId: number): string {
+    return `${workspacesEndpoint}/jobs/${jobId}/stop`;
+  },
+  // Workspaces
+  get workspaces(): string {
+    return `${workspacesEndpoint}/workspaces`;
   },
   get createWorkspaceFromTemplates(): string {
     return `${workspacesEndpoint}/workspaces/`;
@@ -47,8 +50,21 @@ export const apiUrls = (workspacesEndpoint: string) => ({
   startWorkspace(workspaceId: number): string {
     return `${workspacesEndpoint}/workspaces/${workspaceId}/start`;
   },
-  stopJob(jobId: number): string {
-    return `${workspacesEndpoint}/jobs/${jobId}/stop`;
+  createWorkspaceFromNotebookPath(path: string): string {
+    return `/notebooks/${path}`;
+  },
+  // Invitations
+  get invitations(): string {
+    return `${workspacesEndpoint}/shared_workspaces`;
+  },
+  invitation(invitationId: number): string {
+    return `${workspacesEndpoint}/shared_workspaces/${invitationId}`;
+  },
+  acceptInvitation(invitationId: number): string {
+    return `${workspacesEndpoint}/shared_workspaces/${invitationId}/accept`;
+  },
+  users(query: string): string {
+    return `${workspacesEndpoint}/users?search=${query}`;
   },
 });
 
@@ -158,6 +174,36 @@ export function useJobs() {
 export function useWorkspaceJobs(workspaceId: number) {
   const { jobs, isLoading } = useJobs();
   return { jobs: jobs.filter((j) => j.workspace_id === workspaceId), isLoading };
+}
+
+function useFetchInvitations(invitationId?: number) {
+  const urls = useWorkspacesApiURLs();
+  const invitationUrl = invitationId ? urls.invitation(invitationId) : urls.invitations;
+  const { buildKey, hasAccess } = useBuildWorkspacesSWRKey();
+
+  const { data, isLoading, ...rest } = useSWR(
+    buildKey({ url: invitationUrl }),
+    ([url, head]) =>
+      fetcher<WorkspaceAPIResponse<AllWorkspaceInvitations>>({
+        url,
+        requestInit: { headers: head },
+        errorMessages: {
+          404: invitationId
+            ? `No workspace invitation with ID ${invitationId} found.`
+            : 'No workspace invitations found with specified parameters.',
+        },
+      }),
+    { revalidateOnFocus: hasAccess },
+  );
+
+  const sentInvitations = data?.data?.original_workspaces ?? [];
+  const receivedInvitations = data?.data?.shared_workspaces ?? [];
+
+  return { sentInvitations, receivedInvitations, isLoading, ...rest };
+}
+
+export function useInvitations() {
+  return useFetchInvitations();
 }
 
 function useFetchWorkspaces(workspaceId?: number) {

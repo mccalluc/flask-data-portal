@@ -6,7 +6,7 @@ import WorkspacesIcon from 'assets/svg/workspaces.svg';
 function WorkspacesTitle() {
   return (
     <IconPageTitle icon={WorkspacesIcon} data-testid="my-workspaces-title">
-      My Workspaces
+      Workspaces
     </IconPageTitle>
   );
 }

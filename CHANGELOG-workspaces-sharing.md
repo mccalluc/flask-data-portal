@@ -1,0 +1,1 @@
+- Update workspaces landing page with tables for workspace invitations and owned workspaces.

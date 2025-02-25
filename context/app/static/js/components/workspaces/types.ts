@@ -85,6 +85,40 @@ export interface MergedWorkspace extends Workspace {
   path: string;
 }
 
+export interface WorkspaceUser {
+  username: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+}
+
+export interface WorkspaceWithUserId extends MergedWorkspace {
+  user_id?: WorkspaceUser;
+}
+
+export interface SharedWorkspace {
+  id: number;
+  name: string;
+  description: string;
+  user_id: WorkspaceUser;
+}
+
+export type InvitationType = 'Sent' | 'Received';
+
+export interface WorkspaceInvitation {
+  original_workspace_id: SharedWorkspace;
+  shared_workspace_id: SharedWorkspace;
+  last_resource_options: WorkspaceResourceOptions;
+  last_job_type: string;
+  is_accepted: boolean;
+  datetime_share_created: string;
+}
+
+export interface AllWorkspaceInvitations {
+  original_workspaces: WorkspaceInvitation[];
+  shared_workspaces: WorkspaceInvitation[];
+}
+
 interface WorkspaceAPIFailure {
   success: false;
   message: string;

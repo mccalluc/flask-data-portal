@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useDropdownMenuStore } from 'js/shared-styles/dropdowns/DropdownMenuProvider';
-import { WhiteBackgroundIconTooltipButton } from 'js/shared-styles/buttons';
+import { TooltipIconButton } from 'js/shared-styles/buttons/TooltipButton';
 
 interface IconDropdownMenuButtonProps {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ function IconDropdownMenuButton({ children, menuID, tooltip, ...rest }: IconDrop
   const { menuRef, menuIsOpen, openMenu } = useDropdownMenuStore();
 
   return (
-    <WhiteBackgroundIconTooltipButton
+    <TooltipIconButton
       tooltip={tooltip}
       onClick={openMenu}
       color="primary"
@@ -23,7 +23,7 @@ function IconDropdownMenuButton({ children, menuID, tooltip, ...rest }: IconDrop
       {...rest}
     >
       {children}
-    </WhiteBackgroundIconTooltipButton>
+    </TooltipIconButton>
   );
 }
 

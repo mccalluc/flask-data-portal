@@ -40,6 +40,11 @@ import FactCheckRoundedIcon from '@mui/icons-material/FactCheckRounded';
 import BookmarkAddRounded from '@mui/icons-material/BookmarkAddRounded';
 import BookmarkAddedRounded from '@mui/icons-material/BookmarkAddedRounded';
 import BiotechRounded from '@mui/icons-material/BiotechRounded';
+import InboxRounded from '@mui/icons-material/InboxRounded';
+import SendIcon from '@mui/icons-material/Send';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 import { createSvgIcon } from '@mui/material/utils';
 import DatabaseIconSVG from 'assets/svg/database.svg';
@@ -135,6 +140,16 @@ const CheckIcon = withIconStyles(CheckRoundedIcon);
 
 const SampleCategoryIcon = withIconStyles(BiotechRounded);
 
+const ReceivedIcon = withIconStyles(InboxRounded);
+
+const SentIcon = withIconStyles(SendIcon);
+
+const EyeIcon = withIconStyles(VisibilityIcon);
+
+const DotMenuIcon = withIconStyles(MoreVertIcon);
+
+const CloseFilledIcon = withIconStyles(CancelIcon);
+
 const SearchIcon = withIconStyles(createSvgIcon(<SearchIconSVG />, 'Search'));
 
 const DatabaseIcon = withIconStyles(createSvgIcon(<DatabaseIconSVG />, 'Database'));
@@ -194,4 +209,9 @@ export {
   EditSavedEntityIcon,
   CheckIcon,
   SampleCategoryIcon,
+  ReceivedIcon,
+  SentIcon,
+  EyeIcon,
+  DotMenuIcon,
+  CloseFilledIcon,
 };
