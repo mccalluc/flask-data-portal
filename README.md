@@ -11,7 +11,7 @@ and directly or indirectly, on many other HuBMAP repos.
 ```mermaid
 graph LR
     gateway
-    click gateway href "https://github.com/hubmapconsortium/gateway"
+    click gateway "https://github.com/hubmapconsortium/gateway"
 
     top[portal-ui] --> commons
     click top href "https://github.com/hubmapconsortium/portal-ui"
