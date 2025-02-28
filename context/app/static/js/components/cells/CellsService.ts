@@ -3,7 +3,7 @@
 // it might cache results, or the API calls might be made from the JS instead of Python,
 // and then the instance would be initialized with the Cells API URL.
 
-import { AutocompleteQueryResponse } from './AutocompleteEntity/types';
+import { AutocompleteQueryResponse } from './MolecularDataQueryForm/AutocompleteEntity/types';
 import { QueryType } from './queryTypes';
 import { ResultCounts } from './store';
 
@@ -36,16 +36,16 @@ interface GetClusterCellMatchesInDatasetProps {
   minExpression: string | number;
 }
 
-interface DatasetsSelectedByExpressionResponse {
+export interface DatasetsSelectedByExpressionResponse {
   uuid: string;
   // TODO: Add more fields if they exist
 }
 
-interface DatasetsSelectedByCellTypeResponse extends ResultCounts {
+export interface DatasetsSelectedByCellTypeResponse extends ResultCounts {
   list: DatasetsSelectedByExpressionResponse[];
 }
 
-type GetDatasetsResponse<T extends QueryType> = T extends 'cell-type'
+export type GetDatasetsResponse<T extends QueryType> = T extends 'cell-type'
   ? DatasetsSelectedByCellTypeResponse
   : DatasetsSelectedByExpressionResponse[];
 

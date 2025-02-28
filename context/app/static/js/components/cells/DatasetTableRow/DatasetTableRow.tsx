@@ -5,7 +5,7 @@ import { InternalLink } from 'js/shared-styles/Links';
 import ExpandableRow from 'js/shared-styles/tables/ExpandableRow';
 import ExpandableRowCell from 'js/shared-styles/tables/ExpandableRowCell';
 import { getOriginSamplesOrgan } from 'js/helpers/functions';
-import { CellsResultsDataset } from '../types';
+import { Dataset } from 'js/components/types';
 import { useStore } from '../store';
 import { DatasetCellsChartsProps } from '../CellsCharts/types';
 
@@ -17,15 +17,15 @@ function UnitValueCell({ unit, value }: UnitValueCellProps) {
   return <ExpandableRowCell>{`${value} ${unit}`}</ExpandableRowCell>;
 }
 
-function MetadataCells({ donor: { mapped_metadata } }: Pick<CellsResultsDataset, 'donor'>) {
+function MetadataCells({ donor: { mapped_metadata } }: Pick<Dataset, 'donor'>) {
   if (mapped_metadata) {
     return (
       <>
         {(['age', 'body_mass_index'] as const).map((base) => (
-          <UnitValueCell value={mapped_metadata[`${base}_value`]} unit={mapped_metadata[`${base}_unit`]} key={base} />
+          <UnitValueCell value={mapped_metadata[`${base}_value`]!} unit={mapped_metadata[`${base}_unit`]!} key={base} />
         ))}
         <ExpandableRowCell>{mapped_metadata.sex}</ExpandableRowCell>
-        <ExpandableRowCell>{mapped_metadata.race.join(', ')}</ExpandableRowCell>
+        <ExpandableRowCell>{mapped_metadata.race?.join(', ')}</ExpandableRowCell>
       </>
     );
   }
@@ -40,7 +40,7 @@ function MetadataCells({ donor: { mapped_metadata } }: Pick<CellsResultsDataset,
 }
 
 interface DatasetTableRowProps {
-  datasetMetadata: CellsResultsDataset;
+  datasetMetadata: Dataset;
   numCells: number;
   isExpandedToStart: boolean;
   expandedContent: React.ComponentType<DatasetCellsChartsProps>;
@@ -60,7 +60,7 @@ function DatasetTableRow({
   isExpandedToStart,
   expandedContent: ExpandedContent,
 }: DatasetTableRowProps) {
-  const { hubmap_id, uuid, mapped_data_types, donor, last_modified_timestamp } = datasetMetadata;
+  const { hubmap_id, uuid, dataset_type, donor, last_modified_timestamp } = datasetMetadata;
 
   const datasetUrl = useDatasetURL(uuid);
 
@@ -77,7 +77,7 @@ function DatasetTableRow({
         </InternalLink>
       </ExpandableRowCell>
       <ExpandableRowCell>{getOriginSamplesOrgan(datasetMetadata)}</ExpandableRowCell>
-      <ExpandableRowCell>{mapped_data_types.join(', ')}</ExpandableRowCell>
+      <ExpandableRowCell>{dataset_type}</ExpandableRowCell>
       <MetadataCells donor={donor} />
       <ExpandableRowCell>{format(last_modified_timestamp, 'yyyy-MM-dd')}</ExpandableRowCell>
     </ExpandableRow>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ForwardedRef, forwardRef } from 'react';
 import MUISlider, { SliderProps as MUISliderProps } from '@mui/material/Slider';
 import FormHelperText from '@mui/material/FormHelperText';
 
@@ -10,7 +10,10 @@ interface SliderProps extends MUISliderProps {
   helperText?: string;
 }
 
-function Slider({ min, max, value, onChange, id, label, helperText, ...rest }: SliderProps) {
+function Slider(
+  { min, max, value, onChange, id, label, helperText, ...rest }: SliderProps,
+  ref: ForwardedRef<HTMLInputElement>,
+) {
   return (
     <>
       <StyledFormLabel id={id}>{label}</StyledFormLabel>
@@ -23,9 +26,10 @@ function Slider({ min, max, value, onChange, id, label, helperText, ...rest }: S
         aria-labelledby={id}
         valueLabelDisplay="auto"
         {...rest}
+        ref={ref}
       />
     </>
   );
 }
 
-export default Slider;
+export default forwardRef(Slider);

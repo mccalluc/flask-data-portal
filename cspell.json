@@ -1,14 +1,17 @@
 {
   "version": "0.2",
-  "ignorePaths": ["package.json"],
+  "ignorePaths": [
+    "package.json"
+  ],
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
     "asctb",
-    "uberon",
     "cellpop",
+    "clid",
+    "Darkmode",
     "pseudoelement",
-    "Darkmode"
+    "uberon"
   ],
   "ignoreWords": [],
   "import": []

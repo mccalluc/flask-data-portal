@@ -1,9 +1,8 @@
 import CellsService, { CellExpressionInDataset } from 'js/components/cells/CellsService';
-import { useTutorialStore } from 'js/shared-styles/tutorials/TutorialProvider';
 import useSWR from 'swr';
 import { fetcher } from 'js/helpers/swr';
 import { useExpandableRowStore } from 'js/shared-styles/tables/ExpandableRow/store';
-import { extractCLID } from '../CellTypeResults/utils';
+import { extractCLID } from '../CrossModalityResults/utils';
 
 interface CellsChartsDataProps {
   uuid: string;
@@ -41,7 +40,6 @@ interface DiagnosticInfo {
 
 function useCellsChartsData({ uuid, cellVariableName, minExpression }: CellsChartsDataProps) {
   const { isExpanded } = useExpandableRowStore();
-  const { isTutorialRunning, setNextButtonIsDisabled } = useTutorialStore();
 
   const { data, isLoading } = useSWR(
     () => (isExpanded ? { uuid, cellVariableName, minExpression } : null),
@@ -49,11 +47,6 @@ function useCellsChartsData({ uuid, cellVariableName, minExpression }: CellsChar
     {
       revalidateIfStale: false,
       revalidateOnFocus: false,
-      onSuccess: () => {
-        if (isTutorialRunning) {
-          setNextButtonIsDisabled(false);
-        }
-      },
     },
   );
 

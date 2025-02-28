@@ -7,9 +7,9 @@ import { TooltipData } from 'js/shared-styles/charts/types';
 import { createContext, useContext } from 'js/helpers/context';
 import { DatasetCellsChartsProps } from './types';
 import { useCellTypesChartsData } from './hooks';
-import { useStore } from '../store';
-import { extractLabel } from '../CellTypeResults/utils';
+import { extractLabel } from '../CrossModalityResults/utils';
 import { PaddedDiv } from './style';
+import { useCellVariableNames } from '../MolecularDataQueryForm/hooks';
 
 const TotalCellsContext = createContext<number>('Total Cells');
 const useTotalCells = () => useContext(TotalCellsContext);
@@ -30,9 +30,7 @@ function CellTypesChartTooltip({ tooltipData }: { tooltipData: TooltipData<{ val
 }
 
 function CellTypesChart({ uuid }: DatasetCellsChartsProps) {
-  const { cellVariableNames } = useStore((state) => ({
-    cellVariableNames: state.cellVariableNames,
-  }));
+  const cellVariableNames = useCellVariableNames();
   const { expressionData, isLoading } = useCellTypesChartsData({
     uuid,
     cellVariableNames,
